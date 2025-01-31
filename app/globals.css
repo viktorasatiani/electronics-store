@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -69,4 +75,26 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes bgChange {
+  0% {
+    background-image: url("@/public/heroImages/hero-image1.avif");
+  }
+  40% {
+    background-image: url("@/public/heroImages/hero-image2.avif");
+  }
+  80% {
+    background-image: url("@/public/heroImages/hero-image3.avif");
+  }
+  100% {
+    background-image: url("@/public/heroImages/hero-image1.avif");
+  }
+}
+
+.animated-bg {
+  width: 100%;
+  height: 50vh;
+
+  animation: bgChange 10s infinite;
 }
