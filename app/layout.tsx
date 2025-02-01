@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import "animate.css";
 import "./globals.css";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
+import HambMenuProvider from "@/context/hamburgerContext";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -22,11 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} bg-accent`}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <HambMenuProvider>
+        <body className={`${poppins.className} bg-accent`}>
+          <Header />
+          {children}
+          <Footer />
+        </body>
+      </HambMenuProvider>
     </html>
   );
 }
