@@ -12,8 +12,6 @@ export default function SubheroCard({
   heading: string;
   text: string;
 }): React.JSX.Element {
-  console.log(image);
-
   return (
     <div
       className="flex h-dvh flex-col justify-center gap-6 bg-cover bg-center pl-16 text-white"

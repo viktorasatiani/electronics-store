@@ -5,6 +5,7 @@ import FeaturesSection from "@/components/features/featuresSection";
 import AccordionSection from "@/components/accordion/accordionSection";
 import CategorySection from "@/components/caregory/categorySection";
 import SponsorsSection from "@/components/sponsors/sponsorsSection";
+import SubscribeSection from "@/components/subscribe/subscribeSection";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <AccordionSection />
       <CategorySection />
       <SponsorsSection />
+      <SubscribeSection />
     </div>
   );
 }

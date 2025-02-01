@@ -20,6 +20,7 @@ export default function CategoryItem({
             alt={alt}
             width={300}
             height={300}
+            priority
             className="rounded-full hover:scale-[1.2]"
             style={{ transition: "all 0.6s" }}
           />
