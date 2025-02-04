@@ -21,7 +21,7 @@ export default function CategoryItem({
             width={300}
             height={300}
             priority
-            className="rounded-full hover:scale-[1.2]"
+            className="rounded-full hover:scale-[1.2] lg:w-[200px] 2xl:w-[250px]"
             style={{ transition: "all 0.6s" }}
           />
         </div>

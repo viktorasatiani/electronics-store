@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <HambMenuProvider>
-        <body className={`${poppins.className} bg-accent`}>
+        <body className={`${poppins.className} bg-gray-300`}>
           <Header />
           {children}
           <Footer />

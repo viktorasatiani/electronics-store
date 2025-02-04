@@ -9,7 +9,7 @@ import SubscribeSection from "@/components/subscribe/subscribeSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
+    <div className="flex flex-col items-center justify-center">
       <HeroSection />
       <SubheroSection />
       <FeaturesSection />

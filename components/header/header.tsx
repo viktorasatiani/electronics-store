@@ -1,19 +1,32 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { HambMenuContext } from "@/context/hamburgerContext";
 import SearchInput from "../shared/searchInput";
 import HamburgerMenu from "./hamburgerMenu";
 import HeaderMainNav from "./headerMainNav";
 import HeaderShipping from "./headerShipping";
+import ItemsNavigation from "./itemsNavigation";
 
 export default function Header() {
   const context = useContext(HambMenuContext);
-
   if (!context) {
     throw new Error("HambMenuContext must be used within a HambMenuProvider");
   }
+  const { isMenuOpen, sm, setSm } = context;
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 767) {
+        setSm(true);
+      } else {
+        setSm(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, [setSm]);
 
-  const { isMenuOpen } = context;
+  console.log(sm);
 
   return (
     <header className="flex flex-col">
@@ -23,7 +36,7 @@ export default function Header() {
         <>
           <HeaderShipping />
           <HeaderMainNav />
-          <SearchInput />
+          {sm ? <SearchInput /> : <ItemsNavigation />}
         </>
       )}
     </header>

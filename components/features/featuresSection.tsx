@@ -1,7 +1,7 @@
 import FeatureCard from "./featureCard";
 export default function FeaturesSection() {
   return (
-    <section className="grid w-full grid-cols-2 items-center justify-center gap-y-24 bg-white py-10">
+    <section className="grid w-full grid-cols-2 items-center justify-center gap-y-24 bg-white py-10 lg:flex lg:items-center lg:justify-center lg:gap-x-24 lg:py-10 xl:justify-between xl:px-16 2xl:px-20">
       <FeatureCard
         image="/featuresIcons/deliveryIcon.svg"
         alt="Delivery Bike Icon"

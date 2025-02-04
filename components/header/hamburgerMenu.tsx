@@ -66,20 +66,19 @@ export default function HamburgerMenu({
         <Link href={"/login"} className="text-2xl">
           Log In
         </Link>
-        <Avatar
-          className={`scale-[1.4] ${isScrolling && "-translate-x-[265px]"}`}
-        >
+        <Avatar className={`scale-[1.4]`}>
           <AvatarImage src="/globe.svg" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <RiCloseLargeFill
           size={36}
           color="black"
-          className={`${isScrolling && "fixed right-10 top-10 z-40"} cursor-pointer hover:scale-[1.1]`}
+          className={`cursor-pointer hover:scale-[1.1]`}
           style={{ transition: "all 0.8s" }}
           onClick={() => {
-            document.body.style.overflow = "auto";
             setIsMenuOpen(false);
+
+            document.body.style.overflow = "auto";
           }}
         />
       </div>

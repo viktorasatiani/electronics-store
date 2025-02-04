@@ -2,7 +2,7 @@ import SubheroCard from "./subheroCard";
 
 export default function SubheroSection() {
   return (
-    <section className="my-4 flex flex-col gap-4">
+    <section className="my-2 flex flex-col md:w-screen md:flex-row md:items-center md:justify-center md:gap-4 md:px-4 lg:my-6 2xl:gap-8 2xl:px-12">
       <SubheroCard
         image="/subheroImages/subheroImage1.avif"
         subheading="Holiday Deals"
@@ -12,7 +12,7 @@ export default function SubheroSection() {
       <SubheroCard
         image="/subheroImages/subheroImage2.avif"
         subheading="Just in"
-        heading="take your sound anywhere"
+        heading="take  sound anywhere"
         text="top headphone brands"
       />
     </section>

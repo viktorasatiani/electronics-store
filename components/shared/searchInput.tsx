@@ -51,7 +51,7 @@ const speakers = [
   },
 ];
 
-export default function SpeakerSearch() {
+export default function SearchInput() {
   const [search, setSearch] = useState("");
   const [filteredSpeakers, setFilteredSpeakers] = useState(speakers);
 
@@ -64,7 +64,7 @@ export default function SpeakerSearch() {
   };
 
   return (
-    <div className="max-w-3xl p-4 px-20">
+    <div className="w-full self-center p-4 sm:w-full sm:px-10 md:w-full lg:w-1/2">
       <div className="relative">
         <div className="flex">
           <Input

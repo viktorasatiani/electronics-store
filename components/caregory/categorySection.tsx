@@ -6,7 +6,7 @@ export default function CategorySection() {
       <h1 className="mb-20 text-center text-4xl font-medium tracking-wide">
         Shop by Category
       </h1>
-      <div className="mt-8 grid grid-cols-1 gap-y-16">
+      <div className="mt-8 grid grid-cols-1 gap-y-16 md:grid-cols-2 md:grid-rows-4 lg:grid-cols-4 lg:grid-rows-2">
         {categories.map((category) => (
           <CategoryItem
             key={category.id}
