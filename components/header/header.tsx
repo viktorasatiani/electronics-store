@@ -26,8 +26,6 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, [setSm]);
 
-  console.log(sm);
-
   return (
     <header className="flex flex-col">
       {isMenuOpen ? (
