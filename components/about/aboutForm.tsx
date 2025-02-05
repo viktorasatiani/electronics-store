@@ -69,7 +69,10 @@ function AboutForm() {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8 lg:grid lg:w-full lg:grid-cols-2 lg:gap-8 lg:space-y-0 xl:gap-12"
+      >
         <FormField
           control={form.control}
           name="firstName"
@@ -156,15 +159,17 @@ function AboutForm() {
           control={form.control}
           name="startDate"
           render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>Available Start Date</FormLabel>
+            <FormItem className="flex flex-col lg:justify-end">
+              <FormLabel className="text-sm font-medium">
+                Available Start Date
+              </FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
                       variant={"outline"}
                       className={cn(
-                        "w-[240px] pl-3 text-left font-normal",
+                        "w-[240px] pl-3 text-left font-normal lg:w-full",
                         !field.value && "text-muted-foreground",
                       )}
                     >
@@ -196,7 +201,7 @@ function AboutForm() {
         />
         <Button
           type="submit"
-          className="w-full hover:bg-myPrimaryDark"
+          className="w-full hover:bg-myPrimaryDark xl:py-4 xl:text-xl"
           style={{ transition: "all 0.6s" }}
         >
           Submit
