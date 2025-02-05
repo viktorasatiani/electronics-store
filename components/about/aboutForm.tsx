@@ -30,18 +30,23 @@ import {
 } from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
+import { createApplyJob } from "@/appwrite/appwrite";
 
 const formSchema = z.object({
   firstName: z.string().min(2).max(50),
   lastName: z.string().min(2).max(50),
   email: z.string().email(),
-  phone: z.string().min(10).max(20),
+  phone: z
+    .string()
+    .min(9)
+    .max(20)
+    .regex(/^\+?[1-9]\d{1,14}$/, "Invalid phone number"),
   position: z.string().min(2).max(50),
   startDate: z.date(),
 });
 
 function AboutForm() {
-  const [date, setDate] = useState<Date>();
+  const [date] = useState<Date>();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -59,6 +64,8 @@ function AboutForm() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    createApplyJob(values);
+    form.reset();
   }
   return (
     <Form {...form}>
@@ -115,11 +122,7 @@ function AboutForm() {
             <FormItem>
               <FormLabel>Phone</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Mobile Number..."
-                  {...field}
-                  type="number"
-                />
+                <Input placeholder="Mobile Number..." {...field} type="tel" />
               </FormControl>
 
               <FormMessage />
@@ -154,7 +157,7 @@ function AboutForm() {
           name="startDate"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Date of birth</FormLabel>
+              <FormLabel>Available Start Date</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -180,7 +183,7 @@ function AboutForm() {
                     selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
-                      date > new Date() || date < new Date("1900-01-01")
+                      date < new Date() || date < new Date("1900-01-01")
                     }
                     initialFocus
                   />

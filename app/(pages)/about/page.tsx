@@ -2,6 +2,7 @@ import AboutForm from "@/components/about/aboutForm";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import Head from "next/head";
+import { Toaster } from "react-hot-toast";
 
 export default function About() {
   return (
@@ -47,6 +48,7 @@ export default function About() {
               Check out our job postings & opportunities waiting for you
             </p>
             <AboutForm />
+            <Toaster />
           </div>
         </div>
       </div>

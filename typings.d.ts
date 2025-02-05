@@ -7,3 +7,26 @@ interface HambMenuContextType {
 interface HambMenuProviderProps {
   children: React.ReactNode;
 }
+
+interface AboutFormProps {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  position: string;
+  startDate: Date;
+}
+
+interface AboutFormPropsResponse {
+  $collectionId: string;
+  $createdAt: string;
+  $databaseId: string;
+  $permissions: Array<string>;
+  $updatedAt: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  position: string;
+  startDate: string;
+}
