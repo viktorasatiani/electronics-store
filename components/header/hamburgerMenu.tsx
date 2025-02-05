@@ -98,7 +98,7 @@ export default function HamburgerMenu({
           Contact
         </Link>
         <Link
-          href={"/helpcenter"}
+          href={"/help"}
           className="text-xl hover:scale-[1.2] hover:text-myPrimaryDark"
           style={{ transition: "all 0.6s" }}
         >

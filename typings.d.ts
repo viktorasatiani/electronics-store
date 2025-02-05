@@ -30,3 +30,12 @@ interface AboutFormPropsResponse {
   position: string;
   startDate: string;
 }
+
+interface fqaProps {
+  firstTrigger: string;
+  secondTrigger: string;
+  thirdTrigger: string;
+  firstContent: string;
+  secondContent: string;
+  thirdContent: string;
+}

@@ -15,7 +15,7 @@ export default function FooterHelpCenter() {
           className="w-1/2 rounded-full border border-myPrimary bg-white py-8 text-xl font-light text-myPrimaryDark hover:bg-myPrimaryDark hover:text-white lg:py-6 lg:text-lg 2xl:py-8 2xl:text-2xl"
           style={{ transition: "all 0.6s" }}
         >
-          <Link href="/helpcenter ">Help Center</Link>
+          <Link href="/help ">Help Center</Link>
         </Button>
       </div>
       <div
