@@ -17,18 +17,12 @@ interface AboutFormProps {
   startDate: Date;
 }
 
-interface AboutFormPropsResponse {
-  $collectionId: string;
-  $createdAt: string;
-  $databaseId: string;
-  $permissions: Array<string>;
-  $updatedAt: string;
-  email: string;
+interface ContactFormProps {
   firstName: string;
   lastName: string;
-  phone: string;
-  position: string;
-  startDate: string;
+  email: string;
+  subject: string;
+  message: string;
 }
 
 interface fqaProps {

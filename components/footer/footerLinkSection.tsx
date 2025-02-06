@@ -29,16 +29,32 @@ export default function FooterLinkSection() {
         </h1>
 
         <div className="flex flex-col items-center justify-center gap-2">
-          <Link href="/contact-us" className="text-lg 2xl:text-xl">
+          <Link
+            href="/contact"
+            className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
+            style={{ transition: "all 0.6s" }}
+          >
             Contact Us
           </Link>
-          <Link href="/help-center" className="text-lg 2xl:text-xl">
+          <Link
+            href="/help"
+            className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
+            style={{ transition: "all 0.6s" }}
+          >
             Help Center
           </Link>
-          <Link href="/about" className="text-lg 2xl:text-xl">
+          <Link
+            href="/about"
+            className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
+            style={{ transition: "all 0.6s" }}
+          >
             About Us
           </Link>
-          <Link href="/careers" className="text-lg 2xl:text-xl">
+          <Link
+            href="/about/#careers"
+            className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
+            style={{ transition: "all 0.6s" }}
+          >
             Careers
           </Link>
         </div>
@@ -49,16 +65,32 @@ export default function FooterLinkSection() {
         </h1>
 
         <div className="flex flex-col items-center justify-center gap-2">
-          <Link href="/shipping&returns" className="text-lg 2xl:text-xl">
+          <Link
+            href="/shipping&returns"
+            className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
+            style={{ transition: "all 0.6s" }}
+          >
             Shipping & Returns
           </Link>
-          <Link href="/terms&conditions" className="text-lg 2xl:text-xl">
+          <Link
+            href="/terms&conditions"
+            className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
+            style={{ transition: "all 0.6s" }}
+          >
             Terms & Conditions
           </Link>
-          <Link href="/payment" className="text-lg 2xl:text-xl">
+          <Link
+            href="/payment"
+            className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
+            style={{ transition: "all 0.6s" }}
+          >
             Payment Methods
           </Link>
-          <Link href="/faq" className="text-lg 2xl:text-xl">
+          <Link
+            href="/faq"
+            className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
+            style={{ transition: "all 0.6s" }}
+          >
             FAQ
           </Link>
         </div>

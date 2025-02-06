@@ -31,3 +31,27 @@ export async function createApplyJob(info: AboutFormProps) {
     });
   }
 }
+
+export async function createHelpMessage(info: ContactFormProps) {
+  try {
+    const response = await databases.createDocument(
+      process.env.APPWRITE_DATABASE_KEY!,
+      process.env.APPWRITE_HELPMESSAGES_COLLECTION_KEY!,
+      ID.unique(),
+      info,
+    );
+    console.log(response);
+    toast.success("success.", {
+      duration: 4000,
+      position: "top-right",
+      removeDelay: 2000,
+    });
+  } catch (error) {
+    console.error(error);
+    toast.error(`error ${error}`, {
+      duration: 4000,
+      position: "top-right",
+      removeDelay: 2000,
+    });
+  }
+}

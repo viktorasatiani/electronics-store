@@ -48,7 +48,10 @@ export default function About() {
             </div>
           </div>
           <Separator orientation="horizontal" className="mt-8" />
-          <div className="py-10 lg:w-full lg:px-20 xl:px-60 xl:py-24">
+          <div
+            className="py-10 lg:w-full lg:px-20 xl:px-60 xl:py-24"
+            id="careers"
+          >
             <h1 className="mb-6 text-center text-5xl font-medium">Careers</h1>
             <p className="mb-10 text-lg lg:text-center">
               Check out our job postings & opportunities waiting for you

@@ -201,7 +201,7 @@ function AboutForm() {
         />
         <Button
           type="submit"
-          className="w-full hover:bg-myPrimaryDark xl:py-4 xl:text-xl"
+          className="w-full hover:scale-[1.05] hover:bg-myPrimaryDark xl:py-4 xl:text-xl"
           style={{ transition: "all 0.6s" }}
         >
           Submit

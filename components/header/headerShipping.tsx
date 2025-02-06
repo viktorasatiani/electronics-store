@@ -17,7 +17,7 @@ export default function HeaderShipping() {
           About
         </Link>
         <Link
-          href="/help-center"
+          href="/help"
           className="cursor-pointer font-extralight text-white underline"
         >
           Help Center
