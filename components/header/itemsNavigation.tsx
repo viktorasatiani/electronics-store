@@ -18,7 +18,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
       >
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base"
+            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
             href={"/shop all"}
           >
@@ -27,7 +27,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base"
+            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
             href={"/computers"}
           >
@@ -36,7 +36,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base"
+            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
             href={"/tablets"}
           >
@@ -45,7 +45,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base"
+            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
             href={"/drones&cameras"}
           >
@@ -54,7 +54,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base"
+            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
             href={"/Audio"}
           >
@@ -63,7 +63,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base"
+            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
             href={"/mobile"}
           >
@@ -72,7 +72,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base"
+            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
             href={"/tv&cinema"}
           >
@@ -81,7 +81,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base"
+            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
             href={"/wearable"}
           >
@@ -90,7 +90,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base"
+            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
             href={"/sale"}
           >

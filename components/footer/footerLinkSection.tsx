@@ -23,12 +23,12 @@ export default function FooterLinkSection() {
         </h1>
         <ItemsNavigation className="lg:flex lg:flex-col lg:bg-[#D1D5DA] lg:py-0 xl:gap-4 2xl:gap-6" />
       </div>
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-4 2xl:gap-6">
         <h1 className="text center text-2xl font-semibold tracking-wider 2xl:text-3xl">
           Customer Support
         </h1>
 
-        <div className="flex flex-col items-center justify-center gap-2">
+        <div className="flex flex-col items-center justify-center gap-2 2xl:gap-4">
           <Link
             href="/contact"
             className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
@@ -59,12 +59,12 @@ export default function FooterLinkSection() {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-4 2xl:gap-6">
         <h1 className="text center text-2xl font-semibold tracking-wider 2xl:text-3xl">
           Policy
         </h1>
 
-        <div className="flex flex-col items-center justify-center gap-2">
+        <div className="flex flex-col items-center justify-center gap-2 2xl:gap-4">
           <Link
             href="/shipping&returns"
             className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
@@ -80,14 +80,14 @@ export default function FooterLinkSection() {
             Terms & Conditions
           </Link>
           <Link
-            href="/payment"
+            href="/terms&conditions/#payments"
             className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
             style={{ transition: "all 0.6s" }}
           >
             Payment Methods
           </Link>
           <Link
-            href="/faq"
+            href="/help"
             className="text-lg hover:text-myPrimaryDark 2xl:text-xl"
             style={{ transition: "all 0.6s" }}
           >
