@@ -22,7 +22,9 @@ function BreadcrumbWithCustomSeparator({ category }: { category: string }) {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage className="text-base">{category}</BreadcrumbPage>
+          <BreadcrumbPage className="text-base">
+            {category.toUpperCase()}
+          </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

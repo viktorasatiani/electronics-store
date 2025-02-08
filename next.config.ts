@@ -25,6 +25,17 @@ const nextConfig: NextConfig = {
     APPWRITE_WEARABLES_COLLECTION_KEY:
       process.env.APPWRITE_WEARABLES_COLLECTION_KEY,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cloud.appwrite.io",
+
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
