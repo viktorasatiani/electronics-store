@@ -1,10 +1,10 @@
+import Footer from "@/components/footer/footer";
+import Header from "@/components/header/header";
+import HambMenuProvider from "@/context/hamburgerContext";
+import "animate.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "animate.css";
 import "./globals.css";
-import Header from "@/components/header/header";
-import Footer from "@/components/footer/footer";
-import HambMenuProvider from "@/context/hamburgerContext";
 
 const poppins = Poppins({
   variable: "--font-poppins",

@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useState, useContext, useRef } from "react";
+import { useEffect, useContext, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import { cn } from "@/lib/utils";
@@ -23,40 +24,28 @@ export default function HamburgerMenu({
   if (!context) {
     throw new Error("HambMenuContext must be used within a HambMenuProvider");
   }
-  const { setIsMenuOpen } = context;
-  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const { isMenuOpen, setIsMenuOpen } = context;
+  const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (menuRef.current && menuRef.current.scrollTop > 0) {
-        setIsScrolling(true);
-
-        document.body.style.overflow = "hidden";
-      } else {
-        setIsScrolling(false);
-        document.body.style.overflow = "auto";
-      }
-    };
-
+    setIsMenuOpen((isMenuOpen) => !isMenuOpen);
     const menuElement = menuRef.current;
-    if (menuElement) {
-      menuElement.addEventListener("scroll", handleScroll);
+    if (!isMenuOpen) {
+      menuElement?.classList.remove("fixed");
     }
 
     return () => {
-      if (menuElement) {
-        menuElement.removeEventListener("scroll", handleScroll);
-      }
+      menuElement?.classList.add("fixed");
     };
-  }, [isScrolling]);
+  }, [setIsMenuOpen, isMenuOpen, pathname]);
 
   return (
     <div
       ref={menuRef}
       className={twMerge(
         cn(
-          "z-10 flex h-dvh w-screen flex-col gap-10 overflow-scroll bg-gray-200 p-10",
+          "fixed z-10 flex h-screen w-screen flex-col gap-10 overflow-scroll bg-gray-200 p-10",
         ),
         className,
       )}
@@ -107,28 +96,28 @@ export default function HamburgerMenu({
       </div>
       <div className="flex flex-col items-center justify-between gap-6">
         <Link
-          href={"/shopall"}
+          href={"/category/shopall"}
           className="w-full border border-b-2 border-b-gray-800 pb-5 text-center text-xl hover:text-mySecondary"
           style={{ transition: "all 0.6s" }}
         >
           Shop All
         </Link>
         <Link
-          href={"/computers"}
+          href={"/category/computers"}
           className="w-full border border-b-2 border-b-gray-800 pb-5 text-center text-xl hover:text-mySecondary"
           style={{ transition: "all 0.6s" }}
         >
           Computers
         </Link>
         <Link
-          href={"/tablets"}
+          href={"/category/tablets"}
           className="w-full border border-b-2 border-b-gray-800 pb-5 text-center text-xl hover:text-mySecondary"
           style={{ transition: "all 0.6s" }}
         >
           Tablets
         </Link>
         <Link
-          href={"/drones&cameras"}
+          href={"/category/drones-cameras"}
           className="w-full border border-b-2 border-b-gray-800 pb-5 text-center text-xl hover:text-mySecondary"
           style={{ transition: "all 0.6s" }}
         >
@@ -151,7 +140,7 @@ export default function HamburgerMenu({
             </AccordionTrigger>
             <AccordionContent className="text-center">
               <Link
-                href={"/headphones"}
+                href={"/category/headphones"}
                 className="w-full border border-b-2 border-b-gray-800 pb-5 text-center text-xl hover:text-mySecondary"
                 style={{ transition: "all 0.6s" }}
               >
@@ -160,7 +149,7 @@ export default function HamburgerMenu({
             </AccordionContent>
             <AccordionContent className="text-center">
               <Link
-                href={"/speakers"}
+                href={"/category/speakers"}
                 className="w-full border border-b-2 border-b-gray-800 pb-5 text-center text-xl hover:text-mySecondary"
                 style={{ transition: "all 0.6s" }}
               >
@@ -171,21 +160,21 @@ export default function HamburgerMenu({
         </Accordion>
 
         <Link
-          href={"/mobile"}
+          href={"/category/mobiles"}
           className="w-full border border-b-2 border-b-gray-800 pb-5 text-center text-xl hover:text-mySecondary"
           style={{ transition: "all 0.6s" }}
         >
           Mobile
         </Link>
         <Link
-          href={"/tv&cinema"}
+          href={"/category/tv-cinemas"}
           className="w-full border border-b-2 border-b-gray-800 pb-5 text-center text-xl hover:text-mySecondary"
           style={{ transition: "all 0.6s" }}
         >
           T.V. & Home Theater
         </Link>
         <Link
-          href={"/wearable"}
+          href={"/category/wearables"}
           className="w-full border border-b-2 border-b-gray-800 pb-5 text-center text-xl hover:text-mySecondary"
           style={{ transition: "all 0.6s" }}
         >

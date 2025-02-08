@@ -17,7 +17,7 @@ export default function NavigationIocnBox() {
   const { setIsMenuOpen, sm } = context;
 
   function handleOpenMenu() {
-    setIsMenuOpen(true);
+    setIsMenuOpen((isMenuOpen) => !isMenuOpen);
   }
 
   return (

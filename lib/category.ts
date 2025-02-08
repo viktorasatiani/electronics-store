@@ -5,7 +5,7 @@ export const categories = [
     image: "/category/computers.webp",
     alt: "Laptop computer with colorful display",
     text: "Computers",
-    href: "/categories/computers",
+    href: "/category/computers",
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const categories = [
     image: "/category/mobiles.webp",
     alt: "Modern smartphone with gradient display",
     text: "Mobile",
-    href: "/categories/mobile",
+    href: "/category/mobiles",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export const categories = [
     image: "/category/drones.webp",
     alt: "Quadcopter drone with camera",
     text: "Drones & Cameras",
-    href: "/categories/drones-cameras",
+    href: "/category/drones-cameras",
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ export const categories = [
     image: "/category/tablets.webp",
     alt: "Tablet device with colorful display",
     text: "Tablets",
-    href: "/categories/tablets",
+    href: "/category/tablets",
   },
   {
     id: 5,
@@ -37,15 +37,15 @@ export const categories = [
     image: "/category/tvs.webp",
     alt: "Modern flatscreen TV with colorful display",
     text: "T.V & Home Cinema",
-    href: "/categories/tv-home-cinema",
+    href: "/category/tv-cinemas",
   },
   {
     id: 6,
     name: "Wearable Tech",
-    image: "/category/wearable.webp",
+    image: "/category/wearables.webp",
     alt: "Smart watch with digital display",
     text: "Wearable Tech",
-    href: "/categories/wearable-tech",
+    href: "/category/wearables",
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ export const categories = [
     image: "/category/speakers.webp",
     alt: "Black cylindrical wireless speaker",
     text: "Speakers",
-    href: "/categories/speakers",
+    href: "/category/speakers",
   },
   {
     id: 8,
@@ -61,6 +61,6 @@ export const categories = [
     image: "/category/headphones.webp",
     alt: "Black wireless earbuds",
     text: "Headphones",
-    href: "/categories/headphones",
+    href: "/category/headphones",
   },
 ];

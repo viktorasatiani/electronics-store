@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import { cn } from "@/lib/utils";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+
 interface ItemsNavigationProps {
   className?: string;
 }
@@ -20,7 +26,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
           <Link
             className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
-            href={"/shop all"}
+            href={"/category/shopall"}
           >
             Shop All
           </Link>
@@ -29,7 +35,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
           <Link
             className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
-            href={"/computers"}
+            href={"/category/computers"}
           >
             Computers
           </Link>
@@ -38,7 +44,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
           <Link
             className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
-            href={"/tablets"}
+            href={"/category/tablets"}
           >
             Tablets
           </Link>
@@ -47,25 +53,39 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
           <Link
             className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
-            href={"/drones&cameras"}
+            href={"/category/drones-cameras"}
           >
             Drones&Cameras
           </Link>
         </li>
         <li>
-          <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
-            style={{ transition: "all 0.6s" }}
-            href={"/Audio"}
-          >
-            Audio
-          </Link>
+          <HoverCard openDelay={100} closeDelay={100}>
+            <HoverCardTrigger className="cursor-pointer">
+              Audio
+            </HoverCardTrigger>
+            <HoverCardContent className="flex w-full flex-col">
+              <Link
+                className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+                style={{ transition: "all 0.6s" }}
+                href={"/category/headphones"}
+              >
+                Headphone
+              </Link>
+              <Link
+                className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+                style={{ transition: "all 0.6s" }}
+                href={"/category/speakers"}
+              >
+                Speakers
+              </Link>
+            </HoverCardContent>
+          </HoverCard>
         </li>
         <li>
           <Link
             className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
-            href={"/mobile"}
+            href={"/category/mobiles"}
           >
             Mobile
           </Link>
@@ -74,7 +94,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
           <Link
             className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
-            href={"/tv&cinema"}
+            href={"/category/tv-cinemas"}
           >
             T.V & Home Cinema
           </Link>
@@ -83,7 +103,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
           <Link
             className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
-            href={"/wearable"}
+            href={"/category/wearables"}
           >
             Wearable Tech
           </Link>
@@ -92,7 +112,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
           <Link
             className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
-            href={"/sale"}
+            href={"/category/sale"}
           >
             Sale
           </Link>
