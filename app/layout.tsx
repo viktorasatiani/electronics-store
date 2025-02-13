@@ -5,6 +5,8 @@ import "animate.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { TanstackProvider } from "@/components/providers/tanstack-provider";
+import FilterSortProvider from "@/context/filterSortContext";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -24,13 +26,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <HambMenuProvider>
-        <body className={`${poppins.className} bg-gray-300`}>
-          <Header />
-          {children}
-          <Footer />
-        </body>
-      </HambMenuProvider>
+      <body className={`${poppins.className} bg-gray-300`}>
+        <TanstackProvider>
+          <FilterSortProvider>
+            <HambMenuProvider>
+              <Header />
+              {children}
+              <Footer />
+            </HambMenuProvider>
+          </FilterSortProvider>
+        </TanstackProvider>
+      </body>
     </html>
   );
 }

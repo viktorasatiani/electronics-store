@@ -1,34 +1,63 @@
-import { getProducts } from "@/appwrite/appwrite";
+"use client";
+import { LineWave } from "react-loader-spinner";
 import DroppedPrice from "@/components/category/droppedPrice";
+import { FilterHoverCard } from "@/components/category/filterHoverCard";
+import { useFilterSort } from "@/context/filterSortContext";
 import Image from "next/image";
-async function CategoryPage({
-  params,
-}: {
-  params: Promise<{ categoryName: string }>;
-}) {
-  const categoryName = (await params).categoryName;
+import { useParams } from "next/navigation";
+import useProducts from "./useProducts";
+import ErrorElement from "@/components/category/errorElement";
+function CategoryPage({}) {
+  const { categoryName } = useParams();
+  const { filterValue } = useFilterSort();
+  const {
+    data: products,
+    isPending,
+    error,
+    refetch,
+  } = useProducts<ProductTypes[]>({ categoryName, filterValue });
 
-  const products = await getProducts(categoryName);
-  console.log(products);
+  if (isPending) {
+    return (
+      <LineWave
+        visible={true}
+        height="200"
+        width="200"
+        color="#751FFF"
+        ariaLabel="line-wave-loading"
+        wrapperStyle={{}}
+        wrapperClass="flex justify-center items-center"
+        firstLineColor="#751FFF"
+        middleLineColor="#D72D2C"
+        lastLineColor="#5e19cc"
+      />
+    );
+  }
+
+  if (error) {
+    return <ErrorElement error={error.message} refetch={refetch} />;
+  }
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl">
+      <h1 className="mb-6 text-2xl sm:text-3xl">
         {categoryName === "shopall"
           ? "All Products"
-          : categoryName.toUpperCase()}
+          : typeof categoryName === "string" && categoryName?.toUpperCase()}
       </h1>
       <div className="mb-10 flex justify-between">
-        <span className="text-base font-light">
+        <span className="text-base font-light sm:text-lg">
           {products?.length} Products
         </span>
-        <span className="cursor-pointer hover:underline">Filter & Sort</span>
+        <span className="cursor-pointer hover:underline sm:text-lg">
+          <FilterHoverCard />
+        </span>
       </div>
       <div className="grid grid-cols-2 gap-6">
-        {products?.map((product) => (
+        {products?.map((product: ProductTypes) => (
           <div
             key={product.$id}
-            className="grid grid-rows-[1fr,50px,auto] items-start gap-6 justify-self-start before:absolute before:left-10 before:z-10 before:mt-4 before:rounded-full before:bg-mySecondary before:px-4 before:py-1 before:text-white before:content-['SALE']"
+            className={`grid grid-rows-[1fr,70px,auto] items-start gap-6 justify-self-start ${product.onSale && "before:absolute before:z-10 before:bg-mySecondary before:px-4 before:py-1 before:text-white before:content-['SALE']"}`}
           >
             <div className="overflow-hidden">
               <Image
@@ -41,8 +70,8 @@ async function CategoryPage({
                 priority
               />
             </div>
-            <p className="text-lg font-light">{product.name}</p>
-            <div className="items-end text-lg font-light text-myPrimaryDark">
+            <p className="text-lg font-light sm:text-xl">{product.name}</p>
+            <div className="items-end text-lg font-light text-myPrimaryDark sm:text-xl">
               {product.onSale ? <DroppedPrice /> : "$ 85.00"}
             </div>
           </div>

@@ -60,7 +60,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
         </li>
         <li>
           <HoverCard openDelay={100} closeDelay={100}>
-            <HoverCardTrigger className="cursor-pointer">
+            <HoverCardTrigger className="cursor-pointer font-normal">
               Audio
             </HoverCardTrigger>
             <HoverCardContent className="flex w-full flex-col">

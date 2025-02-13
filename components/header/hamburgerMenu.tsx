@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useContext, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
@@ -12,7 +12,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { HambMenuContext } from "@/context/hamburgerContext";
+import { useHambMenu } from "@/context/hamburgerContext";
 
 type HamburgerMenuProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -20,11 +20,7 @@ export default function HamburgerMenu({
   className,
   ...props
 }: HamburgerMenuProps) {
-  const context = useContext(HambMenuContext);
-  if (!context) {
-    throw new Error("HambMenuContext must be used within a HambMenuProvider");
-  }
-  const { isMenuOpen, setIsMenuOpen } = context;
+  const { isMenuOpen, setIsMenuOpen } = useHambMenu();
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -45,7 +41,7 @@ export default function HamburgerMenu({
       ref={menuRef}
       className={twMerge(
         cn(
-          "fixed z-10 flex h-screen w-screen flex-col gap-10 overflow-scroll bg-gray-200 p-10",
+          "fixed z-50 flex h-screen w-screen flex-col gap-10 overflow-scroll bg-gray-200 p-10",
         ),
         className,
       )}
@@ -132,7 +128,7 @@ export default function HamburgerMenu({
           <AccordionItem value="item-1">
             <AccordionTrigger>
               <p
-                className="w-full pb-5 text-center text-lg hover:text-mySecondary hover:no-underline"
+                className="w-full pb-5 text-center text-lg font-normal hover:text-mySecondary hover:no-underline"
                 style={{ transition: "all 0.6s" }}
               >
                 Audio

@@ -8,10 +8,9 @@ export default async function CategoryLayout({
   params: Promise<{ categoryName: string }>;
 }) {
   const categoryName = (await params).categoryName;
-  console.log(categoryName);
 
   return (
-    <section className="flex flex-col gap-6 px-5">
+    <section className="flex flex-col gap-6 px-5 sm:px-10 md:mt-6 md:flex-row md:gap-20">
       <Aside categoryName={categoryName} />
       <div>{children}</div>
     </section>

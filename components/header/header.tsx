@@ -1,6 +1,6 @@
 "use client";
-import { useContext, useEffect } from "react";
-import { HambMenuContext } from "@/context/hamburgerContext";
+import { useEffect } from "react";
+import { useHambMenu } from "@/context/hamburgerContext";
 import SearchInput from "../shared/searchInput";
 import HamburgerMenu from "./hamburgerMenu";
 import HeaderMainNav from "./headerMainNav";
@@ -8,11 +8,7 @@ import HeaderShipping from "./headerShipping";
 import ItemsNavigation from "./itemsNavigation";
 
 export default function Header() {
-  const context = useContext(HambMenuContext);
-  if (!context) {
-    throw new Error("HambMenuContext must be used within a HambMenuProvider");
-  }
-  const { isMenuOpen, sm, setSm } = context;
+  const { isMenuOpen, sm, setSm } = useHambMenu();
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 767) {

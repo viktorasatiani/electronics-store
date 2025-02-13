@@ -1,3 +1,29 @@
+interface ProductTypes {
+  $collectionId: string;
+  $createdAt: string;
+  $databaseId: string;
+  $id: string;
+  $permissions: Array<string>;
+  $updatedAt: string;
+  image: string;
+  name: string;
+  onSale: boolean;
+  product_type: string;
+}
+
+interface getProductsProps {
+  categoryName: string | string[] | undefined;
+  filterValue: string;
+}
+
+interface FilterSortContextType {
+  filterValue: string;
+  updateValue: (newValue: string) => void;
+}
+interface FilterSortProviderProps {
+  children: React.ReactNode;
+}
+
 interface HambMenuContextType {
   isMenuOpen: boolean;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
