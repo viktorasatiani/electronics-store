@@ -14,13 +14,13 @@ export default function SubheroCard({
 }): React.JSX.Element {
   return (
     <div
-      className="flex h-[80dvh] flex-col justify-center gap-6 bg-cover bg-center pl-16 text-white md:h-[60dvh] md:w-1/2 md:bg-center md:pl-8 xl:h-[70dvh] 2xl:gap-10"
+      className="flex h-[70dvh] w-screen flex-col justify-center gap-6 bg-cover bg-center pl-16 text-white md:h-[60dvh] md:w-1/2 md:bg-center md:pl-8 xl:h-[70dvh] 2xl:gap-10"
       style={{ backgroundImage: `url(${image})` }}
     >
       <span className="text-xl font-extralight uppercase tracking-wider md:justify-start">
         {subheading}
       </span>
-      <h1 className="leading-1 text-6xl uppercase tracking-tight sm:pr-96 sm:tracking-tighter md:pr-0 md:text-4xl 2xl:text-6xl">
+      <h1 className="leading-1 text-3xl uppercase tracking-tight sm:pr-96 sm:tracking-tighter md:pr-0 md:text-4xl 2xl:text-6xl">
         {heading}
       </h1>
       <p className="text-xl font-extralight uppercase tracking-wide sm:tracking-normal">

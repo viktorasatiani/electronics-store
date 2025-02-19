@@ -1,5 +1,6 @@
 "use client";
-
+import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 import {
   Command,
@@ -51,7 +52,7 @@ const speakers = [
   },
 ];
 
-export default function SearchInput() {
+export default function SearchInput({ className }: { className: string }) {
   const [search, setSearch] = useState("");
   const [filteredSpeakers, setFilteredSpeakers] = useState(speakers);
 
@@ -64,7 +65,12 @@ export default function SearchInput() {
   };
 
   return (
-    <div className="w-full self-center p-4 sm:w-full sm:px-10 md:w-full lg:w-1/2">
+    <div
+      className={twMerge(
+        cn("w-full self-center p-4 sm:w-full sm:px-10 md:w-full lg:w-1/2"),
+        className,
+      )}
+    >
       <div className="relative">
         <div className="flex">
           <Input

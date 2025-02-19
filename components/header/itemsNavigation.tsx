@@ -9,11 +9,15 @@ import {
 
 interface ItemsNavigationProps {
   className?: string;
+  navClassName?: string;
 }
 
-export default function ItemsNavigation({ className }: ItemsNavigationProps) {
+export default function ItemsNavigation({
+  className,
+  navClassName,
+}: ItemsNavigationProps) {
   return (
-    <nav className="bg-neutral-200">
+    <nav className={twMerge(cn(`bg-neutral-200`), navClassName)}>
       <ul
         className={twMerge(
           cn(
@@ -60,8 +64,11 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
         </li>
         <li>
           <HoverCard openDelay={100} closeDelay={100}>
-            <HoverCardTrigger className="cursor-pointer font-normal">
-              Audio
+            <HoverCardTrigger
+              className="cursor-pointer text-xs font-normal lg:text-base"
+              asChild
+            >
+              <Link href="#">Audio</Link>
             </HoverCardTrigger>
             <HoverCardContent className="flex w-full flex-col">
               <Link
@@ -92,7 +99,7 @@ export default function ItemsNavigation({ className }: ItemsNavigationProps) {
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+            className="text-center text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
             style={{ transition: "all 0.6s" }}
             href={"/category/tv-cinemas"}
           >

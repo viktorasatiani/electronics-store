@@ -57,15 +57,15 @@ function CategoryPage({}) {
         {products?.map((product: ProductTypes) => (
           <div
             key={product.$id}
-            className={`grid grid-rows-[1fr,70px,auto] items-start gap-6 justify-self-start ${product.onSale && "before:absolute before:z-10 before:bg-mySecondary before:px-4 before:py-1 before:text-white before:content-['SALE']"}`}
+            className={`grid grid-rows-[1fr,80px,auto] items-start gap-6 justify-self-start ${product.onSale && "before:absolute before:z-10 before:bg-mySecondary before:px-4 before:py-1 before:text-white before:content-['SALE']"}`}
           >
-            <div className="overflow-hidden">
+            <div className="relative h-56 overflow-hidden">
               <Image
                 src={product.image}
                 alt={product.name}
-                width={200}
-                height={200}
-                className="w-full hover:scale-[1.3]"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="w-full object-cover hover:scale-[1.3]"
                 style={{ transition: "all 0.6s" }}
                 priority
               />

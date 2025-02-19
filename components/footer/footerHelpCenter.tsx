@@ -1,9 +1,10 @@
 import { Button } from "../ui/button";
 import Link from "next/link";
+import Image from "next/image";
 export default function FooterHelpCenter() {
   return (
     <div className="flex flex-col sm:w-full lg:w-full lg:flex-row">
-      <div className="flex flex-col items-center justify-center gap-10 bg-black p-16 text-white lg:w-1/2">
+      <div className="flex flex-col items-center justify-center gap-10 bg-black p-16 text-white md:gap-20 lg:w-1/2">
         <h1 className="px-10 text-center text-3xl font-semibold tracking-wider 2xl:text-5xl">
           Need Help ? Visit Our Help Center
         </h1>
@@ -18,11 +19,16 @@ export default function FooterHelpCenter() {
           <Link href="/help ">Help Center</Link>
         </Button>
       </div>
-      <div
-        className="lg h-[70dvh] w-full bg-cover bg-center lg:h-[500px] lg:w-1/2"
-        style={{ backgroundImage: "url(/helpcenter/helpcenter.avif)" }}
-      >
-        &nbsp;
+      <div className="relative h-[340px] sm:h-[400px] md:h-[550px] lg:h-[600px] lg:w-1/2">
+        <Image
+          src="/helpcenter/helpcenter.avif"
+          alt="Photo of NoteBook and Headphones"
+          quality={100}
+          fill
+          priority
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 639px) 100vw, (max-width: 767px) 100vw, (max-width: 1023px) 100vw, (max-width: 1279px) 100vw, 20vw"
+        />
       </div>
     </div>
   );

@@ -5,9 +5,9 @@ export default function FooterPaymentsBox() {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <Separator className="h-[2px] sm:w-screen" />
-      <h6 className="text-center text-lg sm:my-4">
+      <h1 className="text-center text-lg sm:my-4">
         We accept the wollowing paying methods
-      </h6>
+      </h1>
       <PaymentIconBox />
     </div>
   );

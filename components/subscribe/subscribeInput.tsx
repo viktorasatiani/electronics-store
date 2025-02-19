@@ -46,13 +46,13 @@ export function SubscriptionInput() {
           name="email"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel className="text-3xl lg:text-xl xl:text-2xl">
+              <FormLabel className="text-2xl lg:text-xl xl:text-2xl">
                 Email
               </FormLabel>
               <FormControl>
                 <Input
                   type="email"
-                  className="rounded-full py-8 text-xl text-black focus-visible:ring-transparent md:py-6 md:text-sm lg:w-full lg:py-3 lg:text-base xl:py-6"
+                  className="rounded-full py-6 text-xl text-black focus-visible:ring-transparent md:py-6 md:text-sm lg:w-full lg:py-3 lg:text-base xl:py-6"
                   placeholder="Enter your email"
                   {...field}
                 />
@@ -63,7 +63,7 @@ export function SubscriptionInput() {
         />
         <Button
           type="submit"
-          className="w-full rounded-full py-8 text-3xl font-light outline-2 hover:bg-transparent hover:outline md:py-6 md:text-2xl lg:w-1/3 lg:py-5 lg:text-xl xl:py-7"
+          className="w-full rounded-full py-6 text-xl font-light uppercase outline-2 hover:bg-transparent hover:outline md:py-6 md:text-2xl lg:w-1/3 lg:py-5 lg:text-xl xl:py-7"
           style={{ transition: "all 0.6s" }}
         >
           Submit
