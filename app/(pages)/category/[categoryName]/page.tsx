@@ -53,19 +53,19 @@ function CategoryPage({}) {
           <FilterHoverCard />
         </span>
       </div>
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-2 gap-6 lg:grid-cols-3 lg:gap-6 2xl:grid-cols-4">
         {products?.map((product: ProductTypes) => (
           <div
             key={product.$id}
-            className={`grid grid-rows-[1fr,80px,auto] items-start gap-6 justify-self-start ${product.onSale && "before:absolute before:z-10 before:bg-mySecondary before:px-4 before:py-1 before:text-white before:content-['SALE']"}`}
+            className={`grid w-full grid-rows-[1fr,80px,auto] items-start gap-6 justify-self-start ${product.onSale && "before:absolute before:z-10 before:bg-mySecondary before:px-4 before:py-1 before:text-white before:content-['SALE']"}`}
           >
-            <div className="relative h-56 overflow-hidden">
+            <div className="relative h-56 overflow-hidden sm:h-60 md:h-80 lg:h-60 xl:h-80">
               <Image
                 src={product.image}
                 alt={product.name}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="w-full object-cover hover:scale-[1.3]"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw"
+                className="object-cover hover:scale-[1.3]"
                 style={{ transition: "all 0.6s" }}
                 priority
               />

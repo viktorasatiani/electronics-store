@@ -10,11 +10,18 @@ import {
 interface ItemsNavigationProps {
   className?: string;
   navClassName?: string;
+  categoryTextClass?: string;
+  browseByShow: string;
+  browseByHidden: string;
 }
 
 export default function ItemsNavigation({
   className,
   navClassName,
+  categoryTextClass,
+  browseByShow,
+
+  browseByHidden,
 }: ItemsNavigationProps) {
   return (
     <nav className={twMerge(cn(`bg-neutral-200`), navClassName)}>
@@ -28,7 +35,12 @@ export default function ItemsNavigation({
       >
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+            className={twMerge(
+              cn(
+                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
+              ),
+              categoryTextClass,
+            )}
             style={{ transition: "all 0.6s" }}
             href={"/category/shopall"}
           >
@@ -37,7 +49,12 @@ export default function ItemsNavigation({
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+            className={twMerge(
+              cn(
+                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
+              ),
+              categoryTextClass,
+            )}
             style={{ transition: "all 0.6s" }}
             href={"/category/computers"}
           >
@@ -46,7 +63,12 @@ export default function ItemsNavigation({
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+            className={twMerge(
+              cn(
+                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
+              ),
+              categoryTextClass,
+            )}
             style={{ transition: "all 0.6s" }}
             href={"/category/tablets"}
           >
@@ -55,17 +77,25 @@ export default function ItemsNavigation({
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+            className={twMerge(
+              cn(
+                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
+              ),
+              categoryTextClass,
+            )}
             style={{ transition: "all 0.6s" }}
             href={"/category/drones-cameras"}
           >
             Drones&Cameras
           </Link>
         </li>
-        <li>
+        <li className={twMerge(cn(`block`), browseByHidden)}>
           <HoverCard openDelay={100} closeDelay={100}>
             <HoverCardTrigger
-              className="cursor-pointer text-xs font-normal lg:text-base"
+              className={twMerge(
+                cn(`cursor-pointer text-xs font-normal lg:text-base`),
+                categoryTextClass,
+              )}
               asChild
             >
               <Link href="#">Audio</Link>
@@ -88,9 +118,42 @@ export default function ItemsNavigation({
             </HoverCardContent>
           </HoverCard>
         </li>
+        <li className={twMerge(cn(`hidden`), browseByShow)}>
+          <Link
+            className={twMerge(
+              cn(
+                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
+              ),
+              categoryTextClass,
+            )}
+            style={{ transition: "all 0.6s" }}
+            href={"/category/headphones"}
+          >
+            Headphone
+          </Link>
+        </li>
+        <li className={twMerge(cn(`hidden`), browseByShow)}>
+          <Link
+            className={twMerge(
+              cn(
+                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
+              ),
+              categoryTextClass,
+            )}
+            style={{ transition: "all 0.6s" }}
+            href={"/category/speakers"}
+          >
+            Speakers
+          </Link>
+        </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+            className={twMerge(
+              cn(
+                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
+              ),
+              categoryTextClass,
+            )}
             style={{ transition: "all 0.6s" }}
             href={"/category/mobiles"}
           >
@@ -99,7 +162,12 @@ export default function ItemsNavigation({
         </li>
         <li>
           <Link
-            className="text-center text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+            className={twMerge(
+              cn(
+                `text-center text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
+              ),
+              categoryTextClass,
+            )}
             style={{ transition: "all 0.6s" }}
             href={"/category/tv-cinemas"}
           >
@@ -108,20 +176,16 @@ export default function ItemsNavigation({
         </li>
         <li>
           <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+            className={twMerge(
+              cn(
+                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
+              ),
+              categoryTextClass,
+            )}
             style={{ transition: "all 0.6s" }}
             href={"/category/wearables"}
           >
             Wearable Tech
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
-            style={{ transition: "all 0.6s" }}
-            href={"/category/sale"}
-          >
-            Sale
           </Link>
         </li>
       </ul>
