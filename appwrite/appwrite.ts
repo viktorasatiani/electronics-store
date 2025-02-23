@@ -58,24 +58,26 @@ export async function createHelpMessage(info: ContactFormProps) {
 
 function getOrderingQueries(filterValue: string): string[] {
   if (filterValue === "lowtohigh") {
-    return [Query.limit(100), Query.orderDesc("onSale")];
+    return [Query.orderDesc("onSale")];
   }
   if (filterValue === "hightolow") {
-    return [Query.limit(100), Query.orderAsc("onSale")];
+    return [Query.orderAsc("onSale")];
   }
   if (filterValue === "atoz") {
-    return [Query.limit(100), Query.orderAsc("name")];
+    return [Query.orderAsc("name")];
   }
   if (filterValue === "ztoa") {
-    return [Query.limit(100), Query.orderDesc("name")];
+    return [Query.orderDesc("name")];
   }
   // Default query if needed
-  return [Query.limit(100)];
+  return [];
 }
 
 export async function getProducts({
   categoryName,
   filterValue,
+  offSet,
+  itemsCount,
 }: getProductsProps) {
   try {
     let response;
@@ -84,7 +86,7 @@ export async function getProducts({
       response = await databases.listDocuments(
         process.env.APPWRITE_DATABASE_KEY!,
         process.env.APPWRITE_PRODUCTLIST_COLLECTION_KEY!,
-        queries,
+        [...queries, Query.limit(itemsCount), Query.offset(offSet)],
       );
     } else {
       const orderingQueries = getOrderingQueries(filterValue);

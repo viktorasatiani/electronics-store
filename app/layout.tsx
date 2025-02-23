@@ -31,7 +31,7 @@ export default function RootLayout({
           <FilterSortProvider>
             <HambMenuProvider>
               <Header />
-              {children}
+              <main>{children}</main>
               <Footer />
             </HambMenuProvider>
           </FilterSortProvider>

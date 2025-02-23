@@ -14,6 +14,8 @@ interface ProductTypes {
 interface getProductsProps {
   categoryName: string | string[] | undefined;
   filterValue: string;
+  offSet: number;
+  itemsCount: number;
 }
 
 interface FilterSortContextType {

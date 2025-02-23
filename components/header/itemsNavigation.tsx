@@ -11,8 +11,8 @@ interface ItemsNavigationProps {
   className?: string;
   navClassName?: string;
   categoryTextClass?: string;
-  browseByShow: string;
-  browseByHidden: string;
+  browseByShow?: string;
+  browseByHidden?: string;
 }
 
 export default function ItemsNavigation({
@@ -42,7 +42,7 @@ export default function ItemsNavigation({
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
-            href={"/category/shopall"}
+            href={"/category/shopall?page=1"}
           >
             Shop All
           </Link>

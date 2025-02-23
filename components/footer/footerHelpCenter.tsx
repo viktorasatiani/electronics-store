@@ -25,7 +25,6 @@ export default function FooterHelpCenter() {
           alt="Photo of NoteBook and Headphones"
           quality={100}
           fill
-          priority
           style={{ objectFit: "cover" }}
           sizes="(max-width: 639px) 100vw, (max-width: 767px) 100vw, (max-width: 1023px) 100vw, (max-width: 1279px) 100vw, 20vw"
         />

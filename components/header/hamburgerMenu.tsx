@@ -92,7 +92,7 @@ export default function HamburgerMenu({
       </div>
       <div className="flex flex-col items-center justify-between gap-6">
         <Link
-          href={"/category/shopall"}
+          href={"/category/shopall?page=1"}
           className="w-full border border-b-2 border-b-gray-800 pb-5 text-center text-xl hover:text-mySecondary"
           style={{ transition: "all 0.6s" }}
         >

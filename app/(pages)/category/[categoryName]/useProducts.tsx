@@ -6,17 +6,30 @@ import { useMemo } from "react";
 interface UseProductsParams {
   categoryName: string | string[] | undefined;
   filterValue: string;
+  offSet: number;
+  itemsCount: number;
 }
 
-const useProducts = <T,>({ categoryName, filterValue }: UseProductsParams) => {
+const useProducts = <T,>({
+  categoryName,
+  filterValue,
+  offSet,
+  itemsCount,
+}: UseProductsParams) => {
   const queryKey = useMemo(
-    () => ["products", categoryName, filterValue],
-    [categoryName, filterValue],
+    () => ["products", categoryName, filterValue, offSet, itemsCount],
+    [categoryName, filterValue, offSet, itemsCount],
   );
 
   const { data, isPending, error, refetch } = useQuery<T>({
     queryKey,
-    queryFn: () => getProducts({ categoryName, filterValue }) as Promise<T>,
+    queryFn: () =>
+      getProducts({
+        categoryName,
+        filterValue,
+        offSet,
+        itemsCount,
+      }) as Promise<T>,
     staleTime: 5 * 60 * 1000,
     refetchInterval: false,
     refetchOnMount: false,
