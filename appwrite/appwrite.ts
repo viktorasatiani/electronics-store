@@ -107,3 +107,17 @@ export async function getProducts({
     return error;
   }
 }
+
+export async function getSingleProduct({ productID }: { productID: string }) {
+  try {
+    const response = await databases.getDocument(
+      process.env.APPWRITE_DATABASE_KEY!,
+      process.env.APPWRITE_PRODUCTLIST_COLLECTION_KEY!,
+      productID,
+    );
+    return response;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+}

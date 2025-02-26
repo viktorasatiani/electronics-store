@@ -11,6 +11,19 @@ interface ProductTypes {
   product_type: string;
 }
 
+interface SingleProductTypes {
+  $collectionId: string;
+  $createdAt: string;
+  $databaseId: string;
+  $id: string;
+  $permissions: Array<string>;
+  $updatedAt: string;
+  image: string;
+  name: string;
+  onSale: boolean;
+  product_type: string;
+}
+
 interface getProductsProps {
   categoryName: string | string[] | undefined;
   filterValue: string;
