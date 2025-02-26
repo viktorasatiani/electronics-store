@@ -28,7 +28,7 @@ export default function ItemsNavigation({
       <ul
         className={twMerge(
           cn(
-            `flex items-center justify-between gap-4 px-8 py-4 lg:py-6 xl:justify-start xl:gap-10 xl:px-10 2xl:px-16 2xl:py-4`,
+            `flex items-center justify-between gap-4 px-8 py-3 xl:justify-start xl:gap-10 xl:px-10 2xl:px-16`,
           ),
           className,
         )}
@@ -36,9 +36,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(
-                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
-              ),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -50,9 +48,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(
-                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
-              ),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -64,9 +60,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(
-                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
-              ),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -78,9 +72,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(
-                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
-              ),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -93,7 +85,7 @@ export default function ItemsNavigation({
           <HoverCard openDelay={100} closeDelay={100}>
             <HoverCardTrigger
               className={twMerge(
-                cn(`cursor-pointer text-xs font-normal lg:text-base`),
+                cn(`cursor-pointer text-xs font-normal lg:text-sm`),
                 categoryTextClass,
               )}
               asChild
@@ -102,14 +94,14 @@ export default function ItemsNavigation({
             </HoverCardTrigger>
             <HoverCardContent className="flex w-full flex-col">
               <Link
-                className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+                className="text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base"
                 style={{ transition: "all 0.6s" }}
                 href={"/category/headphones"}
               >
                 Headphone
               </Link>
               <Link
-                className="text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl"
+                className="text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base"
                 style={{ transition: "all 0.6s" }}
                 href={"/category/speakers"}
               >
@@ -121,9 +113,7 @@ export default function ItemsNavigation({
         <li className={twMerge(cn(`hidden`), browseByShow)}>
           <Link
             className={twMerge(
-              cn(
-                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
-              ),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -135,9 +125,7 @@ export default function ItemsNavigation({
         <li className={twMerge(cn(`hidden`), browseByShow)}>
           <Link
             className={twMerge(
-              cn(
-                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
-              ),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -149,9 +137,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(
-                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
-              ),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -164,7 +150,7 @@ export default function ItemsNavigation({
           <Link
             className={twMerge(
               cn(
-                `text-center text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
+                `text-center text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`,
               ),
               categoryTextClass,
             )}
@@ -177,9 +163,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(
-                `text-xs hover:text-sm hover:text-myPrimaryDark lg:text-base lg:hover:text-base 2xl:text-lg 2xl:hover:text-xl`,
-              ),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}

@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
         hostname: "cloud.appwrite.io",
 
         port: "",
-        pathname: "/**",
+        pathname: "/v1/storage/buckets/679ce688001d1a843b8e/files/**",
       },
     ],
   },

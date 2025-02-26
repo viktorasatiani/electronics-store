@@ -67,7 +67,7 @@ export default function SearchInput({ className }: { className: string }) {
   return (
     <div
       className={twMerge(
-        cn("w-full self-center p-4 sm:w-full sm:px-10 md:w-full lg:w-1/2"),
+        cn("w-full self-center p-4 sm:w-full md:w-full lg:w-1/2"),
         className,
       )}
     >

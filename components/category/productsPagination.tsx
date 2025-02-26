@@ -9,8 +9,18 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-function ProductsPagination({ pagesCount }: { pagesCount: number }) {
-  const [currentPage, setCurrentPage] = useState(1);
+function ProductsPagination({
+  pagesCount,
+  createQueryString,
+  pathname,
+  page,
+}: {
+  pagesCount: number;
+  createQueryString: (name: string, value: string) => string;
+  pathname: string;
+  page: number;
+}) {
+  const [currentPage, setCurrentPage] = useState(page);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -23,14 +33,20 @@ function ProductsPagination({ pagesCount }: { pagesCount: number }) {
           <PaginationItem>
             <PaginationPrevious
               disabled={currentPage === 1}
-              href={`?page=${currentPage - 1}`}
+              href={
+                pathname + "?" + createQueryString("page", `${currentPage - 1}`)
+              }
               onClick={() =>
                 handlePageChange(currentPage > 1 ? currentPage - 1 : 1)
               }
             />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href={`?page=${currentPage}`}>
+            <PaginationLink
+              href={
+                pathname + "?" + createQueryString("page", `${currentPage}`)
+              }
+            >
               {currentPage}
             </PaginationLink>
           </PaginationItem>
@@ -40,7 +56,9 @@ function ProductsPagination({ pagesCount }: { pagesCount: number }) {
           <PaginationItem>
             <PaginationNext
               disabled={currentPage === pagesCount}
-              href={`?page=${currentPage + 1}`}
+              href={
+                pathname + "?" + createQueryString("page", `${currentPage + 1}`)
+              }
               onClick={() => handlePageChange(currentPage + 1)}
             />
           </PaginationItem>
