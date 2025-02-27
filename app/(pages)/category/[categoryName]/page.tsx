@@ -9,8 +9,8 @@ import Image from "next/image";
 import useProducts from "../../../../lib/tanstack-query/useProducts";
 import ErrorElement from "@/components/category/errorElement";
 import ProductsPagination from "@/components/category/productsPagination";
-import Loading from "./loading";
 import Aside from "@/components/category/aside";
+import LoadingCategory from "./loading";
 function CategoryPage({
   params,
 }: {
@@ -61,7 +61,7 @@ function CategoryPage({
   return (
     <section className="flex flex-col gap-6 px-5 sm:px-4 md:mt-6 md:flex-row md:gap-12 lg:gap-2 2xl:gap-8">
       <Aside categoryName={categoryName} />
-      <div>
+      <div className="w-full">
         <div className="flex flex-col">
           <h1 className="mb-6 text-2xl sm:text-3xl">
             {categoryName === "shopall"
@@ -77,25 +77,26 @@ function CategoryPage({
               <FilterHoverCard />
             </span>
           </div>
-          <div className="grid grid-cols-3 gap-4 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-8 xl:grid-cols-5 xl:gap-x-2 2xl:gap-x-6">
-            {isPending && <Loading />}
+          <div className="grid grid-cols-3 gap-4 sm:gap-x-10 md:w-full lg:grid-cols-4 lg:gap-x-8 xl:grid-cols-5 xl:gap-x-2 2xl:gap-x-6">
+            {isPending && <LoadingCategory />}
             {products?.map((product: ProductTypes) => (
               <Link
                 key={product.$id}
                 href={`/category/${categoryName}/${product.$id}`}
               >
                 <div
-                  className={`grid w-full grid-rows-[1fr,80px,auto] items-start gap-2 justify-self-start xl:grid-rows-[1fr,60px,auto] ${product.onSale && "before:absolute before:z-10 before:bg-mySecondary before:px-4 before:py-1 before:text-white before:content-['SALE']"}`}
+                  className={`grid w-full grid-rows-[1fr,110px,auto] items-start gap-2 justify-self-start sm:grid-rows-[1fr,80px,auto] xl:grid-rows-[1fr,60px,auto] ${product.onSale && "before:absolute before:z-10 before:bg-mySecondary before:px-4 before:py-1 before:text-white before:content-['SALE']"}`}
                 >
-                  <div className="relative h-40 overflow-hidden sm:h-48 md:h-40 xl:h-52">
+                  <div className="relative h-full w-full overflow-hidden">
                     <Image
                       src={product.image}
                       alt={product.name}
-                      fill
+                      width={400}
+                      height={400}
                       priority
-                      sizes="(max-width: 640px) 40vw,(max-width: 769px) 50vw,(max-width: 1024px) 40vw,(max-width: 1280px) 30vw,
-                (max-width: 1536px) 20vw, 33vw" // adjust as needed based on layout
-                      className="hover:scale-[1.1]"
+                      sizes="(max-width: 640px) calc(100vw - 40px),(max-width: 768px) 100vw,(max-width: 1024px) calc(100vw - 308px),(max-width: 1280px) calc(100vw - 174px),
+                (max-width: 1536px) calc(100vw - 174px), calc(100vw - 200px)" // adjust as needed based on layout
+                      className="object-cover hover:scale-[1.1]"
                       style={{ transition: "all 0.6s" }}
                     />
                   </div>

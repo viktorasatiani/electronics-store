@@ -5,17 +5,17 @@ import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 
 interface UseProductsParams {
-  categoryName: string | string[] | undefined;
-  filterValue: string;
-  offSet: number;
-  itemsCount: number;
+  categoryName?: string | string[] | undefined;
+  filterValue?: string;
+  offSet?: number;
+  itemsCount?: number;
 }
 
 const useProducts = <T,>({
   categoryName,
   filterValue,
-  offSet,
-  itemsCount,
+  offSet = 0,
+  itemsCount = 10,
 }: UseProductsParams) => {
   const queryClient = useQueryClient();
   const page = Number(useSearchParams().get("page")) || 1;

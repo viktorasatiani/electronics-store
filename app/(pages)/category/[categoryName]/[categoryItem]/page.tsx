@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import CategoryItemAccordion from "@/components/categoryItem/categoryItemAccordion";
 import ItemsCarousel from "@/components/categoryItem/itemsCarousel";
+import LoadingItem from "./loading";
 function CategoryItem({
   params,
 }: {
@@ -21,11 +22,10 @@ function CategoryItem({
   const { data, error, isPending } = useSingleProduct<SingleProductTypes>({
     productId: categoryItem,
   });
-  if (isPending) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+  if (isPending) return <LoadingItem />;
   if (!data) return <div>No data available</div>;
-  const { name, image, onSale } = data;
-  console.log(data, error, isPending, categoryName);
+  const { name, image, onSale, $id } = data;
 
   return (
     <div className="mx-10 flex flex-col gap-6">
@@ -44,11 +44,11 @@ function CategoryItem({
       </div>
       <div className="flex flex-col gap-6">
         <div>
-          <div>
+          <div className="relative justify-items-center">
             <Image
               src={image}
               alt={name}
-              sizes=""
+              sizes="(max-width: 640px) 100vw, 640px"
               width={400}
               height={400}
               priority
@@ -83,7 +83,7 @@ function CategoryItem({
       </div>
       <div className="flex flex-col gap-6">
         <h1 className="text-center text-lg uppercase">You might also like</h1>
-        <ItemsCarousel />
+        <ItemsCarousel categoryName={categoryName} productID={$id} />
       </div>
     </div>
   );
