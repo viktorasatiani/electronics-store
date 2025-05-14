@@ -1,4 +1,3 @@
-"use client";
 import {
   Carousel,
   CarouselContent,
@@ -21,10 +20,12 @@ function ItemsCarousel({
 }) {
   console.log(productID);
 
-  const { data, error, isPending } = useProducts<ProductTypes[]>({
+  const { data, error, isPending } = useProducts({
     categoryName,
   });
-  const filteredData = data?.filter((product) => product.$id !== productID);
+  const filteredData = data?.filter(
+    (product: ProductTypes) => product.$id !== productID,
+  );
 
   if (isPending) {
     return <div>Loading...</div>;
@@ -37,12 +38,17 @@ function ItemsCarousel({
     <Carousel
       opts={{
         align: "center",
+        skipSnaps: true,
+        slidesToScroll: "auto",
       }}
-      className="w-8/12 max-w-sm self-center"
+      className="w-8/12 max-w-sm self-center md:max-w-full"
     >
       <CarouselContent>
-        {filteredData?.map((product) => (
-          <CarouselItem className="w-[456px]" key={product.$id}>
+        {filteredData?.map((product: ProductTypes) => (
+          <CarouselItem
+            className="w-[456px] md:basis-1/2 lg:basis-1/3"
+            key={product.$id}
+          >
             <Link href={`/category/${categoryName}/${product.$id}`}>
               <Card className="overflow-hidden rounded-xl border">
                 <CardContent className="p-0">
@@ -56,10 +62,10 @@ function ItemsCarousel({
                     />
                   </div>
                   <div className="bg-gray-50 p-6">
-                    <h3 className="h-[100px] text-xl font-medium">
+                    <h3 className="h-[100px] text-xl font-medium md:text-base">
                       {product.name}
                     </h3>
-                    <div className="mt-4 text-2xl font-bold">
+                    <div className="mt-4 text-2xl font-bold md:text-base md:font-light md:text-myPrimaryDark">
                       {product.onSale ? <DroppedPrice /> : "$ 85.00"}
                     </div>
                   </div>

@@ -2,10 +2,10 @@ import SkeletonLoader from "@/components/category/skeletonLoader";
 
 function LoadingItem() {
   return (
-    <div className="flex h-[70dvh] items-center justify-center">
+    <div className="flex h-[70dvh] items-center justify-center md:mt-10 md:h-[70dvh] md:w-dvw">
       <SkeletonLoader
-        skeletonLoaderContainer="w-4/5 text-center h-full"
-        skeletonHead="h-full w-full overflow-hidden sm:h-48 md:h-52 xl:h-52"
+        skeletonLoaderContainer="w-4/5 text-center h-full md:grid md:grid-cols-2 md:grid-rows-none md:max-w-dvh md:gap-10 md:h-full md:w-full md:px-6"
+        skeletonHead="h-full w-full overflow-hidden sm:h-full md:h-full  xl:h-52"
       />
     </div>
   );

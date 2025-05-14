@@ -1,7 +1,7 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import { getSingleProduct } from "@/appwrite/appwrite";
-const useSingleProduct = <T,>({ productId }: { productId: string }) => {
+import { getSingleProduct } from "@/appwrite/products";
+const useSingleProduct = <T>({ productId }: { productId: string }) => {
   const { data, error, isPending } = useQuery<T>({
     queryKey: ["singleProduct", productId],
     queryFn: () => getSingleProduct({ productID: productId }) as Promise<T>,

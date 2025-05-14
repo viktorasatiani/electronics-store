@@ -8,7 +8,7 @@ export const FilterSortContext = createContext<
 export default function FilterSortProvider({
   children,
 }: FilterSortProviderProps) {
-  const [filterValue, setFilterValue] = useState("");
+  const [filterValue, setFilterValue] = useState("atoz");
 
   const updateValue = (newValue: string) => {
     setFilterValue(newValue);

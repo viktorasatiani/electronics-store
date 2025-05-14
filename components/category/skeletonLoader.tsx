@@ -24,9 +24,9 @@ function SkeletonLoader({
           skeletonHead,
         )}
       />
-      <div className="space-y-2">
-        <Skeleton className="h-4 w-full" />
-        <Skeleton className="h-4 w-full" />
+      <div className="space-y-2 md:h-full">
+        <Skeleton className="h-4 w-full md:h-1/2" />
+        <Skeleton className="h-4 w-full md:h-1/2" />
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 "use client";
+import { getProducts } from "@/appwrite/products";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getProducts } from "@/appwrite/appwrite";
-import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo } from "react";
 
 interface UseProductsParams {
   categoryName?: string | string[] | undefined;
@@ -11,9 +11,9 @@ interface UseProductsParams {
   itemsCount?: number;
 }
 
-const useProducts = <T,>({
+const useProducts = ({
   categoryName,
-  filterValue,
+  filterValue = "atoz",
   offSet = 0,
   itemsCount = 10,
 }: UseProductsParams) => {
@@ -25,7 +25,7 @@ const useProducts = <T,>({
     [categoryName, filterValue, offSet, itemsCount],
   );
 
-  const { data, isPending, error, refetch } = useQuery<T>({
+  const { data, isPending, error, refetch } = useQuery({
     queryKey,
     queryFn: () =>
       getProducts({
@@ -33,49 +33,59 @@ const useProducts = <T,>({
         filterValue,
         offSet,
         itemsCount,
-      }) as Promise<T>,
+      }),
     staleTime: 5 * 60 * 1000,
     refetchInterval: false,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
   });
 
-  if (page < pagesCount) {
-    queryClient.prefetchQuery({
-      queryKey: [
-        "products",
-        categoryName,
-        filterValue,
-        offSet + itemsCount,
-        itemsCount,
-      ],
-      queryFn: () =>
-        getProducts({
+  useEffect(() => {
+    if (page < pagesCount) {
+      queryClient.prefetchQuery({
+        queryKey: [
+          "products",
           categoryName,
           filterValue,
-          offSet: offSet + itemsCount,
+          offSet + itemsCount,
           itemsCount,
-        }) as Promise<T>,
-    });
-  }
-  if (page > 1) {
-    queryClient.prefetchQuery({
-      queryKey: [
-        "products",
-        categoryName,
-        filterValue,
-        offSet - itemsCount,
-        itemsCount,
-      ],
-      queryFn: () =>
-        getProducts({
+        ],
+        queryFn: () =>
+          getProducts({
+            categoryName,
+            filterValue,
+            offSet: offSet + itemsCount,
+            itemsCount,
+          }),
+      });
+    }
+    if (page > 1) {
+      queryClient.prefetchQuery({
+        queryKey: [
+          "products",
           categoryName,
           filterValue,
-          offSet: offSet - itemsCount,
+          offSet - itemsCount,
           itemsCount,
-        }) as Promise<T>,
-    });
-  }
+        ],
+        queryFn: () =>
+          getProducts({
+            categoryName,
+            filterValue,
+            offSet: offSet - itemsCount,
+            itemsCount,
+          }),
+      });
+    }
+  }, [
+    page,
+    pagesCount,
+    categoryName,
+    filterValue,
+    offSet,
+    itemsCount,
+    queryClient,
+  ]);
 
   return { data: data || [], isPending, error, refetch };
 };
