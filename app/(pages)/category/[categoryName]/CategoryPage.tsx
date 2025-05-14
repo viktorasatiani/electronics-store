@@ -7,7 +7,7 @@ import DroppedPrice from "@/components/category/droppedPrice";
 import { FilterHoverCard } from "@/components/category/filterHoverCard";
 import { useFilterSort } from "@/context/filterSortContext";
 import Image from "next/image";
-import useProducts from "@/lib/tanstack-query/useProducts";
+import { useProducts } from "@/lib/tanstack-query/useProducts";
 import ErrorElement from "@/components/category/errorElement";
 import ProductsPagination from "@/components/category/productsPagination";
 import Aside from "@/components/category/aside";
@@ -70,7 +70,7 @@ function CategoryPage() {
           </div>
           <div className="grid grid-cols-3 gap-4 sm:gap-x-10 md:w-full lg:grid-cols-4 lg:gap-x-8 xl:grid-cols-5 xl:gap-x-2 2xl:gap-x-6">
             {isPending && <LoadingCategory />}
-            {products?.map((product: ProductTypes) => (
+            {products?.map((product: SingleProductTypes) => (
               <Link
                 key={product.$id}
                 href={`/category/${categoryName}/${product.$id}`}

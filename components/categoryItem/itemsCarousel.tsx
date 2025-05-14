@@ -8,7 +8,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import useProducts from "@/lib/tanstack-query/useProducts";
+import { useProducts } from "@/lib/tanstack-query/useProducts";
 import DroppedPrice from "../category/droppedPrice";
 
 function ItemsCarousel({
@@ -18,13 +18,11 @@ function ItemsCarousel({
   categoryName: string;
   productID: string;
 }) {
-  console.log(productID);
-
   const { data, error, isPending } = useProducts({
     categoryName,
   });
   const filteredData = data?.filter(
-    (product: ProductTypes) => product.$id !== productID,
+    (product: SingleProductTypes) => product.$id !== productID,
   );
 
   if (isPending) {
@@ -44,7 +42,7 @@ function ItemsCarousel({
       className="w-8/12 max-w-sm self-center md:max-w-full"
     >
       <CarouselContent>
-        {filteredData?.map((product: ProductTypes) => (
+        {filteredData?.map((product: SingleProductTypes) => (
           <CarouselItem
             className="w-[456px] md:basis-1/2 lg:basis-1/3"
             key={product.$id}

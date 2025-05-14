@@ -1,6 +1,6 @@
 "use client";
-import { getProducts } from "@/appwrite/products";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getProducts, updateProducts } from "@/appwrite/products";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
 
@@ -11,12 +11,12 @@ interface UseProductsParams {
   itemsCount?: number;
 }
 
-const useProducts = ({
+export function useProducts({
   categoryName,
   filterValue = "atoz",
   offSet = 0,
   itemsCount = 10,
-}: UseProductsParams) => {
+}: UseProductsParams) {
   const queryClient = useQueryClient();
   const page = Number(useSearchParams().get("page")) || 1;
   const pagesCount = Math.ceil(64 / itemsCount);
@@ -88,6 +88,23 @@ const useProducts = ({
   ]);
 
   return { data: data || [], isPending, error, refetch };
-};
+}
 
-export default useProducts;
+export function useUpdateProducts() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({
+      productId,
+      data,
+    }: {
+      productId: string;
+      data: SingleProductTypes;
+    }) => updateProducts({ productId, data }),
+    onSuccess: (_, { data }) => {
+      queryClient.invalidateQueries({
+        queryKey: ["products", data.$id],
+      });
+      console.log("Product updated successfully, invalidating queries");
+    },
+  });
+}

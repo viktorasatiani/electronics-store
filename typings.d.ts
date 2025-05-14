@@ -1,4 +1,4 @@
-interface ProductTypes {
+interface OrderedProductTypes {
   $collectionId: string;
   $createdAt: string;
   $databaseId: string;
@@ -9,6 +9,7 @@ interface ProductTypes {
   name: string;
   onSale: boolean;
   product_type: string;
+  quantity: number;
 }
 
 interface SingleProductTypes {
@@ -22,6 +23,7 @@ interface SingleProductTypes {
   name: string;
   onSale: boolean;
   product_type: string;
+  quantity: number;
 }
 
 interface getProductsProps {
