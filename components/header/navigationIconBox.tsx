@@ -6,9 +6,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useHambMenu } from "@/context/hamburgerContext";
+import { useCart } from "@/context/cartContext";
 
-export default function NavigationIocnBox() {
+export default function NavigationIconBox() {
   const { setIsMenuOpen } = useHambMenu();
+  const { setIsSheetOpen } = useCart();
 
   function handleOpenMenu() {
     setIsMenuOpen((isMenuOpen) => !isMenuOpen);
@@ -19,14 +21,18 @@ export default function NavigationIocnBox() {
       <RiShoppingBasketLine
         size={36}
         color="black"
-        className="hover:scale-[1.1] 2xl:h-12 2xl:w-12"
+        className="hover:scale-[1.1] hover:cursor-pointer 2xl:h-12 2xl:w-12"
         style={{ transition: "all 0.6s" }}
+        onClick={() => {
+          console.log("clicked");
+          setIsSheetOpen((isSheetOpen) => !isSheetOpen);
+        }}
       />
 
       <GiHamburgerMenu
         size={36}
         color="black"
-        className="hover:scale-[1.1] md:hidden"
+        className="hover:scale-[1.1] hover:cursor-pointer md:hidden"
         style={{ transition: "all 0.6s" }}
         onClick={handleOpenMenu}
       />

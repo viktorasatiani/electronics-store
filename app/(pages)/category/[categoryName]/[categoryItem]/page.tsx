@@ -12,22 +12,21 @@ import { Label } from "@/components/ui/label";
 import CategoryItemAccordion from "@/components/categoryItem/categoryItemAccordion";
 import ItemsCarousel from "@/components/categoryItem/itemsCarousel";
 import LoadingItem from "./loading";
-import { CartSheet } from "@/components/cart/CartSheet";
+import { useCart } from "@/context/cartContext";
+import toast, { Toaster } from "react-hot-toast";
 function CategoryItem({
   params,
 }: {
   params: Promise<{ categoryItem: string; categoryName: string }>;
 }) {
+  const { cartItems, setCartItems } = useCart();
   const router = useRouter();
-  const [isOpenSheet, setIsOpenSheet] = useState(false);
-  const [quantity, setQuantity] = useState(1);
-  const [cartItems, setCartItems] = useState<SingleProductTypes[]>([]);
   const { categoryItem, categoryName } = use(params);
   const { data, error, isPending } = useSingleProduct<SingleProductTypes>({
     productId: categoryItem,
   });
-  console.log(quantity, "quantity");
-
+  const [quantity, setQuantity] = useState(data?.quantity || 1);
+  console.log(cartItems, "cart items");
   if (error) return <div>Error: {error.message}</div>;
   if (isPending) return <LoadingItem />;
   if (!data) return <div>No data available</div>;
@@ -93,13 +92,13 @@ function CategoryItem({
             style={{ transition: "all 0.6s" }}
             onClick={() => {
               setCartItems((prev) => [
-                ...prev,
+                ...prev.filter((item) => item.$id !== data.$id),
                 {
                   ...data,
-                  quantity,
+                  quantity: quantity,
                 },
               ]);
-              setIsOpenSheet(true);
+              toast.success("Item added to cart");
             }}
           >
             Add to cart
@@ -120,12 +119,7 @@ function CategoryItem({
         </h1>
         <ItemsCarousel categoryName={categoryName} productID={data.$id} />
       </div>
-      <CartSheet
-        isOpen={isOpenSheet}
-        setIsOpen={setIsOpenSheet}
-        items={cartItems}
-      />
-      ;
+      <Toaster />
     </div>
   );
 }

@@ -1,28 +1,65 @@
 import Image from "next/image";
+import { Input } from "../ui/input";
+import { useState } from "react";
+import { IoTrashOutline } from "react-icons/io5";
+import { Button } from "../ui/button";
 
-export default function CartSheetItem({ item }: { item: SingleProductTypes }) {
-  console.log(item, "item from cart sheet item");
+export default function CartSheetItem({
+  item,
+  setCartItems,
+}: {
+  item: SingleProductTypes;
+  setCartItems: React.Dispatch<React.SetStateAction<SingleProductTypes[]>>;
+}) {
+  const [controlledQuantity, setControlledQuantity] = useState(item.quantity);
   return (
-    <div>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Image
-            src={item.image}
-            alt={item.name}
-            className="h-16 w-16 rounded-lg object-cover"
-            width={64}
-            height={64}
-          />
-          <div>
-            <h2 className="text-lg font-semibold">{item.name}</h2>
-          </div>
+    <div className="mt-6 flex items-center justify-between">
+      <div className="flex w-full items-center gap-4">
+        <Image
+          src={item.image}
+          alt={item.name}
+          className="h-16 w-16 rounded-lg border border-black object-cover"
+          width={64}
+          height={64}
+        />
+        <div>
+          <h2 className="text-nowrap text-sm font-light">
+            {item.name.split(" ")[0]}
+          </h2>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="text-lg font-semibold">
-            {item.onSale ? "$75.00" : "$85.00"}
-          </div>
-          <span className="text-sm text-gray-500">Qty: {item.quantity}</span>
-        </div>
+      </div>
+      <div className="flex items-center justify-end gap-4">
+        <p className="text-sm font-extralight">
+          {item.onSale ? "$75.00" : "$85.00"}
+        </p>
+        <Input
+          type="text"
+          value={controlledQuantity}
+          onChange={(e) => {
+            const newQuantity = Number(e.target.value);
+            setControlledQuantity(newQuantity);
+            setCartItems((prev: SingleProductTypes[]) =>
+              prev.map((cartItem) =>
+                cartItem.$id === item.$id
+                  ? { ...cartItem, quantity: newQuantity }
+                  : cartItem,
+              ),
+            );
+            console.log(newQuantity, "value from e change");
+          }}
+          maxLength={2}
+          className="h-8 w-2/6 px-2 focus-visible:border-2 focus-visible:border-black focus-visible:ring-0 focus-visible:ring-offset-0"
+        />
+        <Button
+          className="cursor-pointer rounded-full bg-transparent p-2 hover:bg-gray-300 [&_svg]:size-5 [&_svg]:text-black"
+          onClick={() => {
+            setCartItems((prev) =>
+              prev.filter((cartItem) => cartItem.$id !== item.$id),
+            );
+          }}
+        >
+          <IoTrashOutline />
+        </Button>
       </div>
     </div>
   );

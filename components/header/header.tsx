@@ -5,9 +5,12 @@ import HamburgerMenu from "./hamburgerMenu";
 import HeaderMainNav from "./headerMainNav";
 import HeaderShipping from "./headerShipping";
 import ItemsNavigation from "./itemsNavigation";
+import { useCart } from "@/context/cartContext";
+import { CartSheet } from "../cart/CartSheet";
 
 export default function Header() {
   const { isMenuOpen } = useHambMenu();
+  const { cartItems, setCartItems, isSheetOpen, setIsSheetOpen } = useCart();
 
   return (
     <header className="flex flex-col">
@@ -19,6 +22,12 @@ export default function Header() {
           <HeaderMainNav />
           <SearchInput className="block md:hidden" />
           <ItemsNavigation navClassName="hidden md:block" />
+          <CartSheet
+            isOpen={isSheetOpen}
+            setIsOpen={setIsSheetOpen}
+            items={cartItems}
+            setCartItems={setCartItems}
+          />
         </>
       )}
     </header>

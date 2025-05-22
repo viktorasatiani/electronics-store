@@ -7,6 +7,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { TanstackProvider } from "@/components/providers/tanstack-provider";
 import FilterSortProvider from "@/context/filterSortContext";
+import CartProvider from "@/context/cartContext";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -28,13 +29,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} bg-gray-300`}>
         <TanstackProvider>
-          <FilterSortProvider>
-            <HambMenuProvider>
-              <Header />
-              <main>{children}</main>
-              <Footer />
-            </HambMenuProvider>
-          </FilterSortProvider>
+          <CartProvider>
+            <FilterSortProvider>
+              <HambMenuProvider>
+                <Header />
+                <main>{children}</main>
+                <Footer />
+              </HambMenuProvider>
+            </FilterSortProvider>
+          </CartProvider>
         </TanstackProvider>
       </body>
     </html>

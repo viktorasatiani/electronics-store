@@ -12,6 +12,17 @@ interface OrderedProductTypes {
   quantity: number;
 }
 
+interface CartContextType {
+  isSheetOpen: boolean;
+  setIsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  cartItems: SingleProductTypes[];
+  setCartItems: React.Dispatch<React.SetStateAction<SingleProductTypes[]>>;
+}
+
+interface CartProviderProps {
+  children: React.ReactNode;
+}
+
 interface SingleProductTypes {
   $collectionId: string;
   $createdAt: string;
