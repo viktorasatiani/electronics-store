@@ -28,7 +28,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { createApplyJob } from "@/lib/appwrite/appwrite";
+import { createApplyJob } from "@/lib/appwrite/products";
 import { cn } from "@/lib/utils";
 import { z } from "zod";
 

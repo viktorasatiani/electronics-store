@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { createHelpMessage } from "@/lib/appwrite/appwrite";
+import { createHelpMessage } from "@/lib/appwrite/products";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Toaster } from "react-hot-toast";

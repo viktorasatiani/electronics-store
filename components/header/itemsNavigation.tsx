@@ -36,7 +36,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -48,7 +48,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -60,7 +60,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -72,7 +72,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -94,14 +94,14 @@ export default function ItemsNavigation({
             </HoverCardTrigger>
             <HoverCardContent className="flex w-full flex-col">
               <Link
-                className="text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base"
+                className="text-xs hover:text-myPrimaryDark lg:text-sm"
                 style={{ transition: "all 0.6s" }}
                 href={"/category/headphones"}
               >
                 Headphone
               </Link>
               <Link
-                className="text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base"
+                className="text-xs hover:text-myPrimaryDark lg:text-sm"
                 style={{ transition: "all 0.6s" }}
                 href={"/category/speakers"}
               >
@@ -113,7 +113,7 @@ export default function ItemsNavigation({
         <li className={twMerge(cn(`hidden`), browseByShow)}>
           <Link
             className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -125,7 +125,7 @@ export default function ItemsNavigation({
         <li className={twMerge(cn(`hidden`), browseByShow)}>
           <Link
             className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -137,7 +137,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -149,9 +149,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(
-                `text-center text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`,
-              ),
+              cn(`text-center text-xs hover:text-myPrimaryDark lg:text-sm`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}
@@ -163,7 +161,7 @@ export default function ItemsNavigation({
         <li>
           <Link
             className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm 2xl:text-base`),
+              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
               categoryTextClass,
             )}
             style={{ transition: "all 0.6s" }}

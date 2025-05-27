@@ -18,13 +18,13 @@ export default function CategoryItem({
           <Image
             src={image}
             alt={alt}
-            width={300}
-            height={300}
-            className="rounded-full hover:scale-[1.2] lg:w-[200px] 2xl:w-[250px]"
+            width={200}
+            height={200}
+            className="rounded-full hover:scale-[1.2] lg:w-[160px] 2xl:w-[200px]"
             style={{ transition: "all 0.6s" }}
           />
         </div>
-        <h2 className="text-2xl font-medium">{heading}</h2>
+        <h2 className="text-base font-medium">{heading}</h2>
       </div>
     </Link>
   );

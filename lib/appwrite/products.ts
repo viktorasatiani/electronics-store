@@ -6,13 +6,12 @@ import toast from "react-hot-toast";
 export async function createApplyJob(info: AboutFormProps) {
   try {
     const { database } = await createAdminClient();
-    const response = await database.createDocument(
+    await database.createDocument(
       process.env.APPWRITE_DATABASE_KEY!,
       process.env.APPWRITE_JOBAPPLY_COLLECTION_KEY!,
       ID.unique(),
       info,
     );
-    console.log(response);
     toast.success("success.", {
       duration: 4000,
       position: "top-right",
@@ -32,13 +31,13 @@ export async function createHelpMessage(info: ContactFormProps) {
   try {
     const { database } = await createAdminClient();
 
-    const response = await database.createDocument(
+    await database.createDocument(
       process.env.APPWRITE_DATABASE_KEY!,
       process.env.APPWRITE_HELPMESSAGES_COLLECTION_KEY!,
       ID.unique(),
       info,
     );
-    console.log(response);
+
     toast.success("success.", {
       duration: 4000,
       position: "top-right",
@@ -78,9 +77,6 @@ export async function getProducts({
   itemsCount,
 }: getProductsProps) {
   try {
-    console.log(
-      `categoryName: ${categoryName}, filterValue: ${filterValue}, offSet: ${offSet}, itemsCount: ${itemsCount}`,
-    );
     const { database } = await createAdminClient();
 
     let response;

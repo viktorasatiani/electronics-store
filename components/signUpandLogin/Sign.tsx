@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth, useLogin } from "@/lib/tanstack-query/auth";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export function Sign() {
   const [email, setEmail] = useState("");
@@ -25,7 +26,20 @@ export function Sign() {
       alert("Please fill in all fields");
       return;
     }
-    await signUp({ email, password });
+    await signUp(
+      { email, password },
+      {
+        onError: (error) => {
+          toast.error(
+            `Sign up failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+          );
+        },
+        onSuccess: (data) => {
+          console.log("Sign up successful:", data);
+          toast.success("Sign up successful! Redirecting to login...");
+        },
+      },
+    );
   }
   async function handleSignIn(email: string, password: string) {
     console.log("Signing in with email:", email, "and password:", password);
@@ -33,7 +47,20 @@ export function Sign() {
       alert("Please fill in all fields");
       return;
     }
-    await signIn({ email, password });
+    await signIn(
+      { email, password },
+      {
+        onError: (error) => {
+          toast.error(
+            `Login failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+          );
+        },
+        onSuccess: (data) => {
+          console.log("Login successful:", data);
+          toast.success("Login successful! Redirecting...");
+        },
+      },
+    );
   }
   return (
     <Tabs defaultValue="login" className="w-[400px]">
@@ -119,7 +146,18 @@ export function Sign() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button onClick={() => handleSignUp(email, password)}>
+            <Button
+              onKeyDown={(e) => {
+                console.log("Key pressed:", e.key);
+                if (e.key === "Enter") {
+                  console.log("Enter key pressed, signing up...");
+                  handleSignUp(email, password);
+                }
+              }}
+              onClick={() => {
+                handleSignUp(email, password);
+              }}
+            >
               Sign Up
             </Button>
           </CardFooter>

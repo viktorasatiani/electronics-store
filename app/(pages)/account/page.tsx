@@ -5,6 +5,7 @@ import { signOut } from "@/lib/appwrite/appwrite";
 export default async function AccountPage() {
   const user = await getLoggedInUser();
   if (!user) redirect("/login");
+  console.log("User data in AccountPage:", user);
 
   return (
     <>

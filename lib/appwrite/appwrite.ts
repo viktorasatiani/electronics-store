@@ -41,7 +41,9 @@ export async function createAdminClient() {
 export async function getLoggedInUser() {
   try {
     const { account } = await createSessionClient();
-    return await account.get();
+    const result = await account.get();
+    console.log("Logged in user:", result);
+    return result;
   } catch (error) {
     console.log("Error getting logged in user:", error);
     return null;
@@ -60,6 +62,7 @@ export async function signUpWithEmail(email: string, password: string) {
       httpOnly: true,
       sameSite: "strict",
       secure: true,
+      expires: 60 * 60 * 1000, // 1 hour
     });
 
     redirect("/account");
@@ -82,11 +85,12 @@ export async function signInWithEmail(email: string, password: string) {
       sameSite: "strict",
       expires: new Date(session.expire),
       path: "/",
+      maxAge: 60 * 60 * 2, // 2 hours
     });
 
     redirect("/account"); // Redirect after successful login
   } catch (e) {
-    console.error("Error signing in with email:", e);
+    // console.error("Error signing in with email:", e);
     throw e; // Re-throw to handle in calling function
   }
 }

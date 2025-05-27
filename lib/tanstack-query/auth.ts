@@ -1,5 +1,6 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
+  getLoggedInUser,
   signInWithEmail,
   signOut,
   signUpWithEmail,
@@ -18,15 +19,23 @@ export function useAuth() {
   });
 }
 
+export function useGetLoggedInUser() {
+  return useQuery({
+    queryKey: ["loggedInUser"],
+    queryFn: getLoggedInUser,
+    // refetchOnWindowFocus: false,
+    // refetchOnMount: true,
+    // refetchInterval: false,
+  });
+}
 export function useLogin() {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: ({ email, password }: { email: string; password: string }) =>
       signInWithEmail(email, password),
     onSuccess: (data) => {
       console.log("User logged in successfully:", data);
-    },
-    onError: (error) => {
-      console.error("Error logging in user:", error);
+      queryClient.setQueryData(["loggedInUser"], data);
     },
   });
 }
