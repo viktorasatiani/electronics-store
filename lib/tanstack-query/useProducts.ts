@@ -1,5 +1,5 @@
 "use client";
-import { getProducts, updateProducts } from "@/appwrite/products";
+import { getProducts, updateProducts } from "@/lib/appwrite/products";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";

@@ -1,4 +1,3 @@
-"use client";
 import "animate.css";
 import HeroSection from "@/components/hero/heroSection";
 import SubheroSection from "@/components/subhero/subheroSection";

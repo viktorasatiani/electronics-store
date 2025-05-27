@@ -9,6 +9,7 @@ import {
 import CartSheetItem from "./CartSheetItem";
 import { Dispatch, SetStateAction } from "react";
 import { Separator } from "../ui/separator";
+import { useRouter } from "next/navigation";
 
 export function CartSheet({
   isOpen,
@@ -42,6 +43,7 @@ function CartSheetChild({
   items: SingleProductTypes[];
   setCartItems: Dispatch<SetStateAction<SingleProductTypes[]>>;
 }) {
+  const router = useRouter();
   return (
     <Sheet open={isOpen} modal>
       <SheetContent
@@ -80,7 +82,15 @@ function CartSheetChild({
               .toFixed(2)}{" "}
           </p>
 
-          <Button type="submit">Checkout</Button>
+          <Button
+            type="submit"
+            onClick={() => {
+              setIsOpen(false);
+              router.push("/checkout");
+            }}
+          >
+            Checkout
+          </Button>
           <Button type="button" variant="destructive">
             View Cart
           </Button>

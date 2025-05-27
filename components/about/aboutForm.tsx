@@ -1,8 +1,5 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import {
   Form,
   FormControl,
@@ -18,19 +15,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
-import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Input } from "@/components/ui/input";
+import { createApplyJob } from "@/lib/appwrite/appwrite";
+import { cn } from "@/lib/utils";
 import { z } from "zod";
-import { createApplyJob } from "@/appwrite/appwrite";
 
 const formSchema = z.object({
   firstName: z.string().min(2).max(50),

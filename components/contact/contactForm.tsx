@@ -1,10 +1,6 @@
 "use client";
 
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { Toaster } from "react-hot-toast";
 import {
   Form,
   FormControl,
@@ -13,9 +9,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { createHelpMessage } from "@/appwrite/appwrite";
+import { Textarea } from "@/components/ui/textarea";
+import { createHelpMessage } from "@/lib/appwrite/appwrite";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Toaster } from "react-hot-toast";
+import { z } from "zod";
 const formSchema = z.object({
   firstName: z.string().min(2).max(50),
   lastName: z.string().min(2).max(50),

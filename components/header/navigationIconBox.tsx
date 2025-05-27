@@ -1,6 +1,5 @@
 "use client";
 import { RiShoppingBasketLine } from "react-icons/ri";
-import { SlHeart } from "react-icons/sl";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -39,12 +38,10 @@ export default function NavigationIconBox() {
 
       <Link
         href={"/login"}
-        className="hidden md:block md:w-2/6 md:text-sm 2xl:text-lg"
+        className="hidden text-nowrap md:block md:w-2/6 md:text-sm 2xl:text-lg"
       >
         Log In
       </Link>
-      <SlHeart size={36} className="hidden md:block 2xl:h-12 2xl:w-12" />
-
       <Avatar className="hidden scale-[1.4] md:block md:scale-[0.7] 2xl:scale-[0.8]">
         <AvatarImage src="/globe.svg" alt="user avatar" />
         <AvatarFallback>CN</AvatarFallback>
