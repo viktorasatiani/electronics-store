@@ -41,7 +41,7 @@ export default function NavigationIconBox() {
         onClick={() =>
           router.push(`${pathname === "/account" ? "/account" : "/login"}`)
         }
-        className="hidden text-nowrap md:block"
+        className="hidden text-nowrap hover:bg-myPrimaryDark hover:text-white md:block"
       >
         My Account
       </Button>

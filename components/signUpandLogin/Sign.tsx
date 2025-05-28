@@ -1,67 +1,16 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useAuth, useLogin } from "@/lib/tanstack-query/auth";
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { LogInForm } from "../forms/LogInForm";
+import { SignUpForm } from "../forms/SignUpForm";
 
 export function Sign() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { mutateAsync: signUp } = useAuth();
-  const { mutateAsync: signIn } = useLogin();
-  async function handleSignUp(email: string, password: string) {
-    console.log("Signing up with email:", email, "and password:", password);
-    if (!email || !password) {
-      alert("Please fill in all fields");
-      return;
-    }
-    await signUp(
-      { email, password },
-      {
-        onError: (error) => {
-          toast.error(
-            `Sign up failed: ${error instanceof Error ? error.message : "Unknown error"}`,
-          );
-        },
-        onSuccess: (data) => {
-          console.log("Sign up successful:", data);
-          toast.success("Sign up successful! Redirecting to login...");
-        },
-      },
-    );
-  }
-  async function handleSignIn(email: string, password: string) {
-    console.log("Signing in with email:", email, "and password:", password);
-    if (!email || !password) {
-      alert("Please fill in all fields");
-      return;
-    }
-    await signIn(
-      { email, password },
-      {
-        onError: (error) => {
-          toast.error(
-            `Login failed: ${error instanceof Error ? error.message : "Unknown error"}`,
-          );
-        },
-        onSuccess: (data) => {
-          console.log("Login successful:", data);
-          toast.success("Login successful! Redirecting...");
-        },
-      },
-    );
-  }
   return (
     <Tabs defaultValue="login" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-2">
@@ -77,36 +26,8 @@ export function Sign() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => {
-                  console.log("Email changed to:", e.target.value);
-                  setEmail(e.target.value);
-                }}
-              />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => {
-                  console.log("Password changed to:", e.target.value);
-                  setPassword(e.target.value);
-                }}
-              />
-            </div>
+            <LogInForm />
           </CardContent>
-          <CardFooter>
-            <Button onClick={() => handleSignIn(email, password)}>
-              Log In
-            </Button>
-          </CardFooter>
         </Card>
       </TabsContent>
       <TabsContent value="signup">
@@ -118,49 +39,8 @@ export function Sign() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => {
-                  console.log("Email changed to:", e.target.value);
-                  setEmail(e.target.value);
-                }}
-              />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => {
-                  console.log("Password changed to:", e.target.value);
-                  setPassword(e.target.value);
-                }}
-              />
-            </div>
+            <SignUpForm />
           </CardContent>
-          <CardFooter>
-            <Button
-              onKeyDown={(e) => {
-                console.log("Key pressed:", e.key);
-                if (e.key === "Enter") {
-                  console.log("Enter key pressed, signing up...");
-                  handleSignUp(email, password);
-                }
-              }}
-              onClick={() => {
-                handleSignUp(email, password);
-              }}
-            >
-              Sign Up
-            </Button>
-          </CardFooter>
         </Card>
       </TabsContent>
     </Tabs>
