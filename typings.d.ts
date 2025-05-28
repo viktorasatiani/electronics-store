@@ -62,6 +62,12 @@ interface HambMenuProviderProps {
   children: React.ReactNode;
 }
 
+interface User {
+  $id: string;
+  $createdAt: string;
+  $updatedAt: string;
+  email: string;
+}
 interface AboutFormProps {
   firstName: string;
   lastName: string;

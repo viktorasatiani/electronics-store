@@ -49,7 +49,7 @@ export default function HamburgerMenu({
     >
       <div className="flex items-center justify-between">
         <Link href={"/login"} className="text-2xl">
-          Log In
+          My Account
         </Link>
         <Avatar className={`scale-[1.4]`}>
           <AvatarImage src="/globe.svg" />

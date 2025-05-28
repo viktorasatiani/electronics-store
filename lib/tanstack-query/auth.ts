@@ -23,9 +23,7 @@ export function useGetLoggedInUser() {
   return useQuery({
     queryKey: ["loggedInUser"],
     queryFn: getLoggedInUser,
-    // refetchOnWindowFocus: false,
-    // refetchOnMount: true,
-    // refetchInterval: false,
+    refetchOnWindowFocus: false,
   });
 }
 export function useLogin() {
@@ -33,9 +31,8 @@ export function useLogin() {
   return useMutation({
     mutationFn: ({ email, password }: { email: string; password: string }) =>
       signInWithEmail(email, password),
-    onSuccess: (data) => {
-      console.log("User logged in successfully:", data);
-      queryClient.setQueryData(["loggedInUser"], data);
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["loggedInUser"] });
     },
   });
 }

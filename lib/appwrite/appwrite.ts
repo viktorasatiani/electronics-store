@@ -42,7 +42,6 @@ export async function getLoggedInUser() {
   try {
     const { account } = await createSessionClient();
     const result = await account.get();
-    console.log("Logged in user:", result);
     return result;
   } catch (error) {
     console.log("Error getting logged in user:", error);

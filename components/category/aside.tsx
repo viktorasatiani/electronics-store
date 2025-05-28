@@ -1,4 +1,3 @@
-"use client";
 import BreadcrumbWithCustomSeparator from "./breadcrumbWithCustomSeparator";
 import SideBar from "./sideBar";
 

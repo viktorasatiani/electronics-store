@@ -107,6 +107,21 @@ export async function getProducts({
   }
 }
 
+export async function getProductSearch() {
+  try {
+    const { database } = await createAdminClient();
+    const response = await database.listDocuments(
+      process.env.APPWRITE_DATABASE_KEY!,
+      process.env.APPWRITE_PRODUCTLIST_COLLECTION_KEY!,
+      [Query.limit(100)],
+    );
+    return JSON.parse(JSON.stringify(response.documents));
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+}
+
 export async function getSingleProduct({ productID }: { productID: string }) {
   try {
     const { database } = await createAdminClient();
@@ -116,28 +131,6 @@ export async function getSingleProduct({ productID }: { productID: string }) {
       productID,
     );
     return JSON.parse(JSON.stringify(response));
-  } catch (error) {
-    console.error(error);
-    return error;
-  }
-}
-
-export async function updateProducts({
-  productId,
-  data,
-}: {
-  productId: string;
-  data: SingleProductTypes;
-}) {
-  try {
-    const { database } = await createAdminClient();
-    await database.updateDocument(
-      process.env.APPWRITE_DATABASE_KEY!,
-      process.env.APPWRITE_PRODUCTLIST_COLLECTION_KEY!,
-      productId,
-      data,
-    );
-    return { success: true };
   } catch (error) {
     console.error(error);
     return error;

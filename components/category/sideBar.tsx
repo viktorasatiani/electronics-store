@@ -9,7 +9,6 @@ function SideBar() {
       <ItemsNavigation
         className="flex-col items-start px-2 xl:gap-6 xl:px-2 2xl:gap-6 2xl:px-2"
         browseByShow="block"
-        browseByHidden="hidden"
         categoryTextClass="text-sm hover:text-sm xl:text-base xl:hover:text-base font-light 2xl:text-lg 2xl:hover:text-lg"
         navClassName="bg-transparent "
       />

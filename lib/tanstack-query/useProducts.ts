@@ -1,6 +1,6 @@
 "use client";
-import { getProducts, updateProducts } from "@/lib/appwrite/products";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { getProducts, getProductSearch } from "@/lib/appwrite/products";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
 
@@ -90,21 +90,10 @@ export function useProducts({
   return { data: data || [], isPending, error, refetch };
 }
 
-export function useUpdateProducts() {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: ({
-      productId,
-      data,
-    }: {
-      productId: string;
-      data: SingleProductTypes;
-    }) => updateProducts({ productId, data }),
-    onSuccess: (_, { data }) => {
-      queryClient.invalidateQueries({
-        queryKey: ["products", data.$id],
-      });
-      console.log("Product updated successfully, invalidating queries");
-    },
+export function useProductSearch() {
+  const { data, isPending, error, refetch } = useQuery({
+    queryKey: ["productSearch"],
+    queryFn: getProductSearch,
   });
+  return { data, isPending, error, refetch };
 }
