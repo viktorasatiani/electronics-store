@@ -24,7 +24,6 @@ export default function ItemsNavigation({
   browseByShow,
 }: ItemsNavigationProps) {
   const pathname = usePathname().split("/")[2] || "shopall";
-  console.log("Current Pathname:", pathname);
   return (
     <nav className={twMerge(cn(`bg-neutral-200`), navClassName)}>
       <ul

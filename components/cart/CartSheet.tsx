@@ -7,85 +7,56 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import CartSheetItem from "./CartSheetItem";
-import { Dispatch, SetStateAction } from "react";
 import { Separator } from "../ui/separator";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/context/cartContext";
 
-export function CartSheet({
-  isOpen,
-  setIsOpen,
-  items,
-  setCartItems,
-}: {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  items: SingleProductTypes[];
-  setCartItems: Dispatch<SetStateAction<SingleProductTypes[]>>;
-}) {
-  return (
-    <CartSheetChild
-      isOpen={isOpen}
-      setIsOpen={setIsOpen}
-      items={items}
-      setCartItems={setCartItems}
-    />
-  );
-}
+export function CartSheet() {
+  const {
+    cartItems,
+    setCartItems,
+    isSheetOpen,
+    setIsSheetOpen,
+    subtotal,
+    setSubtotal,
+  } = useCart();
 
-function CartSheetChild({
-  isOpen,
-  setIsOpen,
-  items,
-  setCartItems,
-}: {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  items: SingleProductTypes[];
-  setCartItems: Dispatch<SetStateAction<SingleProductTypes[]>>;
-}) {
   const router = useRouter();
   return (
-    <Sheet open={isOpen} modal>
+    <Sheet open={isSheetOpen} modal>
       <SheetContent
         className="flex flex-col justify-between"
         aria-describedby={undefined}
         onInteractOutside={() => {
-          setIsOpen(false);
+          setIsSheetOpen(false);
         }}
         onEscapeKeyDown={() => {
-          setIsOpen(false);
+          setIsSheetOpen(false);
         }}
-        setIsClose={setIsOpen}
+        setIsClose={setIsSheetOpen}
       >
         <div>
           <SheetHeader>
-            <SheetTitle>Cart ({items.length} Item)</SheetTitle>
+            <SheetTitle>Cart ({cartItems.length} Item)</SheetTitle>
           </SheetHeader>
-          {items.map((item) => (
+          {cartItems.map((item) => (
             <CartSheetItem
               key={item.$id}
               item={item}
               setCartItems={setCartItems}
+              setSubtotal={setSubtotal}
             />
           ))}
         </div>
 
         <SheetFooter className="order-last flex gap-4 sm:flex-col">
           <Separator className="text-black" />
-          <p>
-            Subtotal $
-            {items
-              .reduce(
-                (acc, item) => acc + (item.onSale ? 75 : 85) * item.quantity,
-                0,
-              )
-              .toFixed(2)}{" "}
-          </p>
+          <p>Subtotal ${subtotal.toFixed(2)}</p>
 
           <Button
             type="submit"
             onClick={() => {
-              setIsOpen(false);
+              setIsSheetOpen(false);
               router.push("/checkout");
             }}
           >

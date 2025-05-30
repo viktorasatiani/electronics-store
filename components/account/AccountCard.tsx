@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "../ui/button";
 import { signOut } from "@/lib/appwrite/appwrite";
+import Link from "next/link";
 
 export default function AccountCard({ user }: { user: User }) {
   return (
@@ -14,11 +15,18 @@ export default function AccountCard({ user }: { user: User }) {
       <CardHeader>
         <CardTitle>Your Account</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-6">
         <p>Email: {user.email}</p>
         <p>UserID: {user.$id}</p>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="justify-between">
+        <Button
+          variant={"default"}
+          className="hover:bg-myPrimaryDark hover:text-white"
+          asChild
+        >
+          <Link href={`/account/myOrders`}>My Orders</Link>
+        </Button>
         <Button
           variant={"outline"}
           className="hover:bg-myPrimaryDark hover:text-white"

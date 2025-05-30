@@ -7,7 +7,7 @@ interface Sponsor {
 import Image from "next/image";
 export default function SponsorItem({ sponsor }: { sponsor: Sponsor }) {
   return (
-    <div className="relative h-[200px] w-[300px] border-2 border-gray-200 md:h-[300px] md:w-[400px] lg:h-[150px] lg:w-[250px]">
+    <div className="relative h-[100px] w-[150px] border-2 border-gray-200 md:h-[200px] md:w-[250px] lg:h-[150px] lg:w-[250px]">
       <Image
         src={sponsor.image}
         fill

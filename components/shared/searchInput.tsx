@@ -14,14 +14,12 @@ import { Input } from "@/components/ui/input";
 import { X } from "lucide-react";
 import Image from "next/image";
 import { useProductSearch } from "@/lib/tanstack-query/useProducts";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function SearchInput({ className }: { className: string }) {
   const { data } = useProductSearch();
-  const router = useRouter();
   const [search, setSearch] = useState("");
   const [filteredSpeakers, setFilteredSpeakers] = useState(data);
-  console.log("Search Input Data:", filteredSpeakers);
 
   const handleSearch = (value: string) => {
     setSearch(value);
@@ -82,13 +80,8 @@ export default function SearchInput({ className }: { className: string }) {
                         setSearch("");
                       }}
                     >
-                      <Button
-                        variant="link"
-                        onClick={() => {
-                          router.push(
-                            `/category/${speaker.product_type}/${speaker.$id}`,
-                          );
-                        }}
+                      <Link
+                        href={`/category/${speaker.product_type}/${speaker.$id}`}
                       >
                         <div className="flex items-center gap-3">
                           <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-gray-100">
@@ -106,7 +99,7 @@ export default function SearchInput({ className }: { className: string }) {
                             </h3>
                           </div>
                         </div>
-                      </Button>
+                      </Link>
                     </CommandItem>
                   ))}
                 </CommandGroup>

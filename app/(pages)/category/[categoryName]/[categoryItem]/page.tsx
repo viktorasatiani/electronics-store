@@ -19,14 +19,13 @@ function CategoryItem({
 }: {
   params: Promise<{ categoryItem: string; categoryName: string }>;
 }) {
-  const { cartItems, setCartItems } = useCart();
+  const { setCartItems } = useCart();
   const router = useRouter();
   const { categoryItem, categoryName } = use(params);
   const { data, error, isPending } = useSingleProduct<SingleProductTypes>({
     productId: categoryItem,
   });
   const [quantity, setQuantity] = useState(data?.quantity || 1);
-  console.log(cartItems, "cart items");
   if (error) return <div>Error: {error.message}</div>;
   if (isPending) return <LoadingItem />;
   if (!data) return <div>No data available</div>;
@@ -81,7 +80,6 @@ function CategoryItem({
               placeholder={quantity.toString()}
               value={quantity}
               onChange={(e) => {
-                console.log(e.target.value, "value from e change");
                 setQuantity(Number(e.target.value));
               }}
             />

@@ -1,6 +1,12 @@
 "use client";
-import { getProducts, getProductSearch } from "@/lib/appwrite/products";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  createOrder,
+  getOrders,
+  getProducts,
+  getProductSearch,
+  getSingleOrder,
+} from "@/lib/appwrite/products";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
 
@@ -94,6 +100,42 @@ export function useProductSearch() {
   const { data, isPending, error, refetch } = useQuery({
     queryKey: ["productSearch"],
     queryFn: getProductSearch,
+  });
+  return { data, isPending, error, refetch };
+}
+
+export function useCreateOrder() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (data: OrderFormProps) => createOrder(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["orders"] });
+      console.log("Order created successfully");
+    },
+    onError: (error) => {
+      console.error("Error creating order:", error);
+    },
+  });
+}
+
+export function useGetOrder(email: string) {
+  const { data, isPending, error, refetch } = useQuery({
+    queryKey: ["orders", email],
+    queryFn: () => getOrders(email),
+    staleTime: 5 * 60 * 1000,
+    refetchInterval: false,
+    refetchOnWindowFocus: false,
+  });
+  return { data, isPending, error, refetch };
+}
+
+export function useGetSingleOrder(orderID: string) {
+  const { data, isPending, error, refetch } = useQuery({
+    queryKey: ["orders", orderID],
+    queryFn: () => getSingleOrder(orderID),
+    staleTime: 5 * 60 * 1000,
+    refetchInterval: false,
+    refetchOnWindowFocus: false,
   });
   return { data, isPending, error, refetch };
 }

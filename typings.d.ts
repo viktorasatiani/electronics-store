@@ -17,6 +17,8 @@ interface CartContextType {
   setIsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>;
   cartItems: SingleProductTypes[];
   setCartItems: React.Dispatch<React.SetStateAction<SingleProductTypes[]>>;
+  subtotal: number;
+  setSubtotal: React.Dispatch<React.SetStateAction<number>>;
 }
 
 interface CartProviderProps {
@@ -44,6 +46,52 @@ interface getProductsProps {
   itemsCount: number;
 }
 
+interface OrderedItemProps {
+  name: string;
+  image: string;
+  quantity: number;
+}
+interface OrderFormProps {
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  phone: string;
+  email: string;
+  orderedItem: OrderedItemProps[];
+  price: string;
+}
+
+interface getOrderProps {
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  phone: string;
+  email: string;
+  price: string;
+  orderedItem: {
+    name: string;
+    image: string;
+    quantity: number;
+    $createdAt: string;
+  }[];
+  $collectionId: string;
+  $databaseId: string;
+  $id: string;
+  $createdAt: string;
+  $updatedAt: string;
+  $permissions: Array<string>;
+  $collectionId: string;
+  $databaseId: string;
+}
+
+interface EachOrder {
+  name: string;
+  image: string;
+  quantity: number;
+  $createdAt: string;
+}
 interface FilterSortContextType {
   filterValue: string;
   updateValue: (newValue: string) => void;

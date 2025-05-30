@@ -8,6 +8,7 @@ export const CartContext = createContext<CartContextType | undefined>(
 export default function CartProvider({ children }: CartProviderProps) {
   const [cartItems, setCartItems] = useState<SingleProductTypes[]>([]);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [subtotal, setSubtotal] = useState(0);
 
   return (
     <CartContext.Provider
@@ -16,6 +17,8 @@ export default function CartProvider({ children }: CartProviderProps) {
         setIsSheetOpen,
         cartItems,
         setCartItems,
+        subtotal,
+        setSubtotal,
       }}
     >
       {children}

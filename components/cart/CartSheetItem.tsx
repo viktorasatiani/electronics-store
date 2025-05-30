@@ -7,9 +7,11 @@ import { Button } from "../ui/button";
 export default function CartSheetItem({
   item,
   setCartItems,
+  setSubtotal,
 }: {
   item: SingleProductTypes;
   setCartItems: React.Dispatch<React.SetStateAction<SingleProductTypes[]>>;
+  setSubtotal: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const [controlledQuantity, setControlledQuantity] = useState(item.quantity);
   return (
@@ -30,11 +32,12 @@ export default function CartSheetItem({
       </div>
       <div className="flex items-center justify-end gap-4">
         <p className="text-sm font-extralight">
-          {item.onSale ? "$75.00" : "$85.00"}
+          {item.onSale ? "$70.00" : "$85.00"}
         </p>
         <Input
           type="text"
           value={controlledQuantity}
+          min={1}
           onChange={(e) => {
             const newQuantity = Number(e.target.value);
             setControlledQuantity(newQuantity);
@@ -45,7 +48,10 @@ export default function CartSheetItem({
                   : cartItem,
               ),
             );
-            console.log(newQuantity, "value from e change");
+            setSubtotal(
+              (prev) =>
+                prev + (newQuantity - item.quantity) * (item.onSale ? 70 : 85),
+            );
           }}
           maxLength={2}
           className="h-8 w-2/6 px-2 focus-visible:border-2 focus-visible:border-black focus-visible:ring-0 focus-visible:ring-offset-0"
@@ -56,6 +62,10 @@ export default function CartSheetItem({
             setCartItems((prev) =>
               prev.filter((cartItem) => cartItem.$id !== item.$id),
             );
+            setSubtotal((prev) => {
+              const itemPrice = item.onSale ? 70 : 85;
+              return prev - itemPrice * item.quantity;
+            });
           }}
         >
           <IoTrashOutline />

@@ -10,7 +10,7 @@ export default function NavigationIconBox() {
   const pathname = usePathname();
   const router = useRouter();
   const { setIsMenuOpen } = useHambMenu();
-  const { setIsSheetOpen } = useCart();
+  const { setIsSheetOpen, cartItems, setSubtotal } = useCart();
 
   function handleOpenMenu() {
     setIsMenuOpen((isMenuOpen) => !isMenuOpen);
@@ -24,7 +24,13 @@ export default function NavigationIconBox() {
         className="hover:scale-[1.1] hover:cursor-pointer"
         style={{ transition: "all 0.6s" }}
         onClick={() => {
-          console.log("clicked");
+          setSubtotal(
+            cartItems.reduce(
+              (acc, item) => acc + (item.onSale ? 70 : 85) * item.quantity,
+              0,
+            ),
+          );
+          // Open the cart sheet
           setIsSheetOpen((isSheetOpen) => !isSheetOpen);
         }}
       />
