@@ -105,3 +105,19 @@ export async function signOut() {
 
   redirect("/login");
 }
+
+export async function subscribeAccount(email: string) {
+  try {
+    const { database } = await createAdminClient();
+    await database.createDocument(
+      process.env.APPWRITE_DATABASE_KEY!,
+      process.env.APPWRITE_SUBSCRIBED_ACCOUNTS_COLLECTION_KEY!,
+      ID.unique(),
+      { email },
+    );
+    return true;
+  } catch (error) {
+    console.log("Error getting subscribed account:", error);
+    return null;
+  }
+}

@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { subscribeAccount } from "@/lib/appwrite/appwrite";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -33,6 +34,7 @@ export function SubscriptionInput() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+    subscribeAccount(values.email);
   }
   return (
     <Form {...form}>

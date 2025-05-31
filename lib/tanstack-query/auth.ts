@@ -4,6 +4,7 @@ import {
   signInWithEmail,
   signOut,
   signUpWithEmail,
+  subscribeAccount,
 } from "../appwrite/appwrite";
 
 export function useAuth() {
@@ -45,6 +46,18 @@ export function useLogout() {
     },
     onError: (error) => {
       console.error("Error logging out user:", error);
+    },
+  });
+}
+
+export function useSubscribe() {
+  return useMutation({
+    mutationFn: (email: string) => subscribeAccount(email),
+    onSuccess: () => {
+      console.log("User subscribed successfully");
+    },
+    onError: (error) => {
+      console.error("Error subscribing user:", error);
     },
   });
 }
