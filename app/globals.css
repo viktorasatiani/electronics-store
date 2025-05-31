@@ -79,16 +79,16 @@ body {
 
 @keyframes bgChange {
   0% {
-    background-image: url("@/public/heroImages/hero-image1.avif");
+    background-image: url("/heroImages/hero-image1.avif");
   }
   40% {
-    background-image: url("@/public/heroImages/hero-image2.avif");
+    background-image: url("/heroImages/hero-image2.avif");
   }
   80% {
-    background-image: url("@/public/heroImages/hero-image3.avif");
+    background-image: url("/heroImages/hero-image3.avif");
   }
   100% {
-    background-image: url("@/public/heroImages/hero-image1.avif");
+    background-image: url("/heroImages/hero-image1.avif");
   }
 }
 
@@ -98,8 +98,6 @@ body {
 
   animation: bgChange 10s infinite;
 }
-
-
 
 @layer base {
   * {
