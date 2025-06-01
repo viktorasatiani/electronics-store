@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,6 +15,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { useCreateOrder } from "@/lib/tanstack-query/useProducts";
 import toast from "react-hot-toast";
+import { GlobalLoading } from "../ui/Loading";
+import { useCart } from "@/context/cartContext";
 
 const formSchema = z.object({
   firstName: z.string().min(2).max(50),
@@ -31,7 +33,10 @@ export function CheckoutForm({
   cartItems: SingleProductTypes[];
   user: User;
 }) {
-  const { mutateAsync: createOrder } = useCreateOrder();
+  const { mutateAsync: createOrder, isPending: isCreatingOrder } =
+    useCreateOrder();
+  const { setCartItems } = useCart();
+  const router = useRouter();
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -69,11 +74,16 @@ export function CheckoutForm({
     await createOrder(data, {
       onSuccess: () => {
         toast.success("Order created successfully");
+        router.push("/account/myOrders");
+        setCartItems([]); // Clear the cart after successful order creation
       },
       onError: (error) => {
         toast.error("Error creating order:" + error.message);
       },
     });
+  }
+  if (isCreatingOrder) {
+    return <GlobalLoading />;
   }
   return (
     <Form {...form}>

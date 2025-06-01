@@ -140,13 +140,12 @@ export async function getSingleProduct({ productID }: { productID: string }) {
 export async function createOrder(data: OrderFormProps) {
   try {
     const { database } = await createAdminClient();
-    const response = await database.createDocument(
+    await database.createDocument(
       process.env.APPWRITE_DATABASE_KEY!,
       process.env.APPWRITE_ORDERS_COLLECTION_KEY!,
       ID.unique(),
       data,
     );
-    console.log("Order created successfully:", response);
   } catch (error) {
     console.error(error);
   }
@@ -160,7 +159,6 @@ export async function getOrders(email: string) {
       process.env.APPWRITE_ORDERS_COLLECTION_KEY!,
       [Query.equal("email", email)],
     );
-    console.log("Orders fetched successfully:", response);
     return JSON.parse(JSON.stringify(response.documents));
   } catch (error) {
     console.error(error);
@@ -176,7 +174,6 @@ export async function getSingleOrder(orderID: string) {
       process.env.APPWRITE_ORDERS_COLLECTION_KEY!,
       orderID,
     );
-    console.log("Order fetched successfully:", response);
     return JSON.parse(JSON.stringify(response));
   } catch (error) {
     console.error(error);

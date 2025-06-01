@@ -12,8 +12,6 @@ export default function OrderDetail() {
   const { data: order, isPending: isGettingOrder } = useGetSingleOrder(
     params.orderItem,
   );
-  console.log("Current Params:", params);
-  console.log("Order Data:", order);
   if (isGettingOrder) return <GlobalLoading />;
   return <OrderChild order={order} id={params.orderItem} />;
 }

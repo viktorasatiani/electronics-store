@@ -13,7 +13,6 @@ import { GlobalLoading } from "@/components/ui/Loading";
 export default function Checkout() {
   const { cartItems, subtotal, setCartItems, setSubtotal } = useCart();
   const { data: user, isPending: isGettingUser } = useGetLoggedInUser();
-  console.log("CheckoutPage cartItems:", cartItems);
   if (isGettingUser) {
     return <GlobalLoading />;
   }
