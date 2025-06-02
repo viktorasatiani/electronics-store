@@ -21,7 +21,7 @@ export default function FooterLinkSection() {
         <h1 className="text center text-2xl font-semibold tracking-wider">
           Shop
         </h1>
-        <ItemsNavigation className="lg:flex lg:flex-col lg:bg-[#D1D5DA] lg:py-0 xl:gap-4 2xl:gap-6" />
+        <ItemsNavigation className="lg:flex lg:flex-col lg:bg-background lg:py-0 xl:gap-4 2xl:gap-6" />
       </div>
       <div className="flex flex-col items-center justify-center gap-4 2xl:gap-6">
         <h1 className="text center text-2xl font-semibold tracking-wider">

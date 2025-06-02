@@ -17,7 +17,7 @@ export default function FeatureCard({
         height={100}
         className="sm:w-[150px] lg:w-[100px]"
       />
-      <p className="text-base font-semibold">{text}</p>
+      <p className="text-base font-semibold text-black">{text}</p>
     </div>
   );
 }

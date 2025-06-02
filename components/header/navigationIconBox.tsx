@@ -20,8 +20,7 @@ export default function NavigationIconBox() {
     <div className="flex items-center justify-between gap-2">
       <RiShoppingBasketLine
         size={24}
-        color="black"
-        className="hover:scale-[1.1] hover:cursor-pointer"
+        className="hover:scale-[1.1] hover:cursor-pointer [&_svg]:text-foreground"
         style={{ transition: "all 0.6s" }}
         onClick={() => {
           setSubtotal(
@@ -37,8 +36,7 @@ export default function NavigationIconBox() {
 
       <GiHamburgerMenu
         size={24}
-        color="black"
-        className="hover:scale-[1.1] hover:cursor-pointer md:hidden"
+        className="hover:scale-[1.1] hover:cursor-pointer md:hidden [&_svg]:text-foreground"
         style={{ transition: "all 0.6s" }}
         onClick={handleOpenMenu}
       />

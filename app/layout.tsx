@@ -8,6 +8,7 @@ import "./globals.css";
 import { TanstackProvider } from "@/components/providers/tanstack-provider";
 import FilterSortProvider from "@/context/filterSortContext";
 import CartProvider from "@/context/cartContext";
+import { ThemeProvider } from "@/components/themeProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -26,15 +27,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.className} bg-gray-300`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${poppins.className} bg-background`}>
         <TanstackProvider>
           <CartProvider>
             <FilterSortProvider>
               <HambMenuProvider>
-                <Header />
-                <main>{children}</main>
-                <Footer />
+                <ThemeProvider
+                  attribute="class"
+                  defaultTheme="system"
+                  enableSystem
+                  disableTransitionOnChange
+                >
+                  <Header />
+                  <main>{children}</main>
+                  <Footer />
+                </ThemeProvider>
               </HambMenuProvider>
             </FilterSortProvider>
           </CartProvider>

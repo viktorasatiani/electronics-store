@@ -85,7 +85,7 @@ function CategoryItem({
             />
           </div>
           <Button
-            className="rounded-full bg-myPrimary px-10 py-6 text-xl font-light text-white hover:border-myPrimary/20 hover:bg-myPrimary/20 hover:text-black sm:px-14 md:w-2/3 md:px-2 md:py-1 md:text-base"
+            className="rounded-full bg-myPrimary px-10 py-6 text-xl font-light text-white hover:border-myPrimary/20 hover:bg-myPrimary/20 hover:text-foreground dark:hover:bg-myPrimary/80 sm:px-14 md:w-2/3 md:px-2 md:py-1 md:text-base"
             variant={"outline"}
             style={{ transition: "all 0.6s" }}
             onClick={() => {
@@ -102,7 +102,7 @@ function CategoryItem({
             Add to cart
           </Button>
           <Button
-            className="rounded-full bg-black px-10 py-6 text-xl font-light text-white hover:border-black/20 hover:bg-black/20 hover:text-black sm:px-14 md:mb-6 md:w-2/3 md:px-2 md:py-1 md:text-base"
+            className="rounded-full bg-foreground px-10 py-6 text-xl font-light text-background hover:border-black/20 hover:bg-black/20 hover:text-black dark:hover:bg-foreground/80 sm:px-14 md:mb-6 md:w-2/3 md:px-2 md:py-1 md:text-base"
             variant={"outline"}
             style={{ transition: "all 0.6s" }}
           >

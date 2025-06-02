@@ -50,7 +50,7 @@ function ItemsCarousel({
             <Link href={`/category/${categoryName}/${product.$id}`}>
               <Card className="overflow-hidden rounded-xl border">
                 <CardContent className="p-0">
-                  <div className="relative flex aspect-square items-center justify-center bg-gray-100">
+                  <div className="relative flex aspect-square items-center justify-center bg-foreground">
                     <Image
                       src={product.image || "/placeholder.svg"}
                       alt={product.name}
@@ -59,8 +59,8 @@ function ItemsCarousel({
                       className="w-full object-cover"
                     />
                   </div>
-                  <div className="bg-gray-50 p-6">
-                    <h3 className="h-[100px] text-xl font-medium md:text-base">
+                  <div className="bg-background p-6">
+                    <h3 className="h-[100px] text-xl font-medium text-foreground md:text-base">
                       {product.name}
                     </h3>
                     <div className="mt-4 text-2xl font-bold md:text-base md:font-light md:text-myPrimaryDark">

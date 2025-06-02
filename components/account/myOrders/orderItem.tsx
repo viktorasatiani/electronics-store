@@ -16,20 +16,20 @@ export default function OrderItem({ order }: { order: getOrderProps }) {
         {/* Header */}
         <div className="mb-6 flex items-start justify-between">
           <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-myPrimary/10">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-foreground">
               <Recycle className="h-6 w-6 text-myPrimary" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-foreground">
                 Order no #{order.$id}
               </h3>
-              <p className="text-lg text-gray-900">${order?.price}.00</p>
+              <p className="text-lg text-foreground">${order?.price}.00</p>
             </div>
           </div>
           <div className="flex items-center">
             <Button
               onClick={handleOrderDetails}
-              className="hover:bg-mytext-myPrimary rounded-full bg-myPrimary px-6 py-2 text-white"
+              className="hover:bg-mytext-myPrimary rounded-full bg-myPrimary px-6 py-2 text-white hover:bg-myPrimaryDark"
             >
               Order Details
             </Button>

@@ -2,7 +2,7 @@ import CategoryItem from "./categoryItem";
 import { categories } from "@/lib/category";
 export default function CategorySection() {
   return (
-    <section className="w-full bg-white py-20">
+    <section className="w-full bg-background py-20">
       <h1 className="mb-20 text-center text-2xl font-medium tracking-wide">
         Shop by Category
       </h1>

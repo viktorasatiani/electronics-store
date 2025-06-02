@@ -25,7 +25,7 @@ export default function ItemsNavigation({
 }: ItemsNavigationProps) {
   const pathname = usePathname().split("/")[2] || "shopall";
   return (
-    <nav className={twMerge(cn(`bg-neutral-200`), navClassName)}>
+    <nav className={twMerge(cn(`bg-background`), navClassName)}>
       <ul
         className={twMerge(
           cn(
@@ -41,7 +41,7 @@ export default function ItemsNavigation({
                 <Link
                   className={twMerge(
                     cn(
-                      `text-nowrap text-xs hover:text-myPrimaryDark lg:text-sm ${pathname === item.id && "text-myPrimaryDark"}`,
+                      `text-nowrap text-xs hover:text-myPrimary lg:text-sm ${pathname === item.id && "text-myPrimary"}`,
                     ),
                     categoryTextClass,
                   )}
@@ -69,7 +69,7 @@ export default function ItemsNavigation({
                     {item?.subItems.map((subItem) => (
                       <Link
                         key={subItem.id}
-                        className="text-xs hover:text-myPrimaryDark lg:text-sm"
+                        className="text-xs hover:text-myPrimary lg:text-sm"
                         style={{ transition: "all 0.6s" }}
                         href={subItem.href}
                       >
@@ -82,143 +82,6 @@ export default function ItemsNavigation({
             );
           }
         })}
-        {/* <li>
-          <Link
-            className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
-              categoryTextClass,
-            )}
-            style={{ transition: "all 0.6s" }}
-            href={"/category/shopall?page=1"}
-          >
-            Shop All
-          </Link>
-        </li>
-        <li>
-          <Link
-            className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
-              categoryTextClass,
-            )}
-            style={{ transition: "all 0.6s" }}
-            href={"/category/computers"}
-          >
-            Computers
-          </Link>
-        </li>
-        <li>
-          <Link
-            className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
-              categoryTextClass,
-            )}
-            style={{ transition: "all 0.6s" }}
-            href={"/category/tablets"}
-          >
-            Tablets
-          </Link>
-        </li>
-        <li>
-          <Link
-            className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
-              categoryTextClass,
-            )}
-            style={{ transition: "all 0.6s" }}
-            href={"/category/drones-cameras"}
-          >
-            Drones&Cameras
-          </Link>
-        </li>
-        <li className={twMerge(cn(`block`), browseByHidden)}>
-          <HoverCard openDelay={100} closeDelay={100}>
-            <HoverCardTrigger
-              className={twMerge(
-                cn(`cursor-pointer text-xs font-normal lg:text-sm`),
-                categoryTextClass,
-              )}
-              asChild
-            >
-              <Link href="#">Audio</Link>
-            </HoverCardTrigger>
-            <HoverCardContent className="flex w-full flex-col">
-              <Link
-                className="text-xs hover:text-myPrimaryDark lg:text-sm"
-                style={{ transition: "all 0.6s" }}
-                href={"/category/headphones"}
-              >
-                Headphone
-              </Link>
-              <Link
-                className="text-xs hover:text-myPrimaryDark lg:text-sm"
-                style={{ transition: "all 0.6s" }}
-                href={"/category/speakers"}
-              >
-                Speakers
-              </Link>
-            </HoverCardContent>
-          </HoverCard>
-        </li>
-        <li className={twMerge(cn(`hidden`), browseByShow)}>
-          <Link
-            className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
-              categoryTextClass,
-            )}
-            style={{ transition: "all 0.6s" }}
-            href={"/category/headphones"}
-          >
-            Headphone
-          </Link>
-        </li>
-        <li className={twMerge(cn(`hidden`), browseByShow)}>
-          <Link
-            className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
-              categoryTextClass,
-            )}
-            style={{ transition: "all 0.6s" }}
-            href={"/category/speakers"}
-          >
-            Speakers
-          </Link>
-        </li>
-        <li>
-          <Link
-            className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
-              categoryTextClass,
-            )}
-            style={{ transition: "all 0.6s" }}
-            href={"/category/mobiles"}
-          >
-            Mobile
-          </Link>
-        </li>
-        <li>
-          <Link
-            className={twMerge(
-              cn(`text-center text-xs hover:text-myPrimaryDark lg:text-sm`),
-              categoryTextClass,
-            )}
-            style={{ transition: "all 0.6s" }}
-            href={"/category/tv-cinemas"}
-          >
-            T.V & Home Cinema
-          </Link>
-        </li>
-        <li>
-          <Link
-            className={twMerge(
-              cn(`text-xs hover:text-myPrimaryDark lg:text-sm`),
-              categoryTextClass,
-            )}
-            style={{ transition: "all 0.6s" }}
-            href={"/category/wearables"}
-          >
-            Wearable Tech
-          </Link>
-        </li> */}
       </ul>
     </nav>
   );

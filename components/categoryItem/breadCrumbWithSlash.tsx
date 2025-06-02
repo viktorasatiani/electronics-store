@@ -21,10 +21,7 @@ export function BreadcrumbWithSlash({
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link
-              href="/"
-              className="cursor-pointer text-black hover:text-black/50"
-            >
+            <Link href="/" className="cursor-pointer text-foreground">
               Home
             </Link>
           </BreadcrumbLink>
@@ -33,10 +30,7 @@ export function BreadcrumbWithSlash({
           <Slash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink
-            className="cursor-pointer text-black hover:text-black/50"
-            asChild
-          >
+          <BreadcrumbLink className="cursor-pointer text-foreground" asChild>
             <Link href={`/category/${categoryName}`}>
               {categoryName.toUpperCase()}
             </Link>
@@ -46,7 +40,7 @@ export function BreadcrumbWithSlash({
           <Slash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbPage className="text-black/50">{name}</BreadcrumbPage>
+          <BreadcrumbPage className="text-foreground">{name}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

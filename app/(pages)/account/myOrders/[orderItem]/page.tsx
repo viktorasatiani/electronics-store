@@ -19,12 +19,12 @@ export default function OrderDetail() {
 function OrderChild({ order, id }: { order: getOrderProps; id: string }) {
   const router = useRouter();
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
+    <div className="flex h-full w-full flex-col items-center justify-center bg-gray-100">
       <div className="flex flex-col items-center justify-center gap-4">
         <h1 className="mt-6 text-2xl font-bold text-gray-900">Order Details</h1>
       </div>
       <div className="mx-auto max-w-4xl p-6">
-        <Card className="w-full">
+        <Card className="w-full bg-white">
           <CardContent className="p-6">
             {/* Header */}
             <div className="mb-8 flex w-full items-center justify-stretch">

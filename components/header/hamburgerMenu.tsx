@@ -43,7 +43,7 @@ export default function HamburgerMenu({
       ref={menuRef}
       className={twMerge(
         cn(
-          "fixed z-50 flex h-screen w-screen flex-col gap-10 overflow-scroll bg-gray-200 p-10",
+          "fixed z-50 flex h-screen w-screen flex-col gap-10 overflow-scroll bg-background p-10",
         ),
         className,
       )}
@@ -64,8 +64,7 @@ export default function HamburgerMenu({
 
         <RiCloseLargeFill
           size={24}
-          color="black"
-          className={`cursor-pointer hover:scale-[1.1]`}
+          className={`cursor-pointer hover:scale-[1.1] [&_svg]:text-foreground`}
           style={{ transition: "all 0.8s" }}
           onClick={() => {
             setIsMenuOpen(false);
@@ -81,7 +80,7 @@ export default function HamburgerMenu({
             setIsMenuOpen(false);
             router.push("/about");
           }}
-          className="hover:bg-transparent hover:text-myPrimaryDark"
+          className="basis-1/3 hover:bg-transparent hover:text-myPrimary"
           style={{ transition: "all 0.6s" }}
         >
           About
@@ -92,7 +91,7 @@ export default function HamburgerMenu({
             setIsMenuOpen(false);
             router.push("/contact");
           }}
-          className="translate-x-10 hover:bg-transparent hover:text-myPrimaryDark"
+          className="basis-1/3 hover:bg-transparent hover:text-myPrimary"
           style={{ transition: "all 0.6s" }}
         >
           Contact
@@ -103,7 +102,7 @@ export default function HamburgerMenu({
             setIsMenuOpen(false);
             router.push("/help");
           }}
-          className="hover:bg-transparent hover:text-myPrimaryDark"
+          className="basis-1/3 hover:bg-transparent hover:text-myPrimary"
           style={{ transition: "all 0.6s" }}
         >
           HelpCenter
@@ -117,7 +116,7 @@ export default function HamburgerMenu({
                 key={item.id}
                 type="single"
                 collapsible
-                className="w-full border border-b-2 border-b-gray-800 hover:no-underline"
+                className="[&_[data-state='open']:no-underline] w-full hover:no-underline"
               >
                 <AccordionItem value={item.id}>
                   <AccordionTrigger>
@@ -136,7 +135,7 @@ export default function HamburgerMenu({
                           setIsMenuOpen(false);
                           router.push(subItem.href);
                         }}
-                        className="w-full border pb-5 text-center hover:bg-transparent hover:text-mySecondary"
+                        className="w-full border-b pb-5 text-center hover:bg-transparent hover:text-mySecondary"
                         style={{ transition: "all 0.6s" }}
                       >
                         {subItem.label}
@@ -155,7 +154,7 @@ export default function HamburgerMenu({
                   setIsMenuOpen(false);
                   router.push(item.href);
                 }}
-                className="w-full border border-b-2 border-b-gray-800 pb-5 text-center hover:bg-transparent hover:text-mySecondary"
+                className="w-full border-b pb-5 text-center hover:bg-transparent hover:text-mySecondary"
                 style={{ transition: "all 0.6s" }}
               >
                 {item.label}

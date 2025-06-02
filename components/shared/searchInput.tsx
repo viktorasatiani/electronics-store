@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/command";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { X } from "lucide-react";
 import Image from "next/image";
 import { useProductSearch } from "@/lib/tanstack-query/useProducts";
 import Link from "next/link";
@@ -47,28 +46,15 @@ export default function SearchInput({ className }: { className: string }) {
           />
           <Button
             variant="default"
-            className="rounded-l-none bg-myPrimary px-4 hover:bg-black"
+            className="rounded-l-none bg-myPrimary px-4 text-background hover:bg-foreground dark:text-white dark:hover:bg-myPrimaryDark"
           >
             Search
           </Button>
         </div>
 
         {search && (
-          <div className="absolute left-0 right-0 top-full z-10 mt-1 max-h-[calc(4*100px)] overflow-auto rounded-lg border bg-white shadow-lg">
-            <Command className="rounded-lg">
-              <div className="sticky top-0 z-10 flex items-center border-b bg-white px-3 py-2">
-                <p className="text-sm font-medium">Products</p>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="ml-auto h-8 w-8 shrink-0"
-                  onClick={() => {
-                    setFilteredSpeakers(data);
-                  }}
-                >
-                  <X className="h-4 w-4" />
-                </Button>
-              </div>
+          <div className="absolute left-0 right-0 top-full z-10 mt-1 max-h-[calc(4*100px)] overflow-auto rounded-lg border bg-foreground shadow-lg">
+            <Command className="rounded-md">
               <CommandList>
                 <CommandEmpty>No results found.</CommandEmpty>
                 <CommandGroup>

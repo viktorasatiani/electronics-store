@@ -19,7 +19,7 @@ export default function Checkout() {
   return (
     <div className="flex w-screen flex-1 flex-col items-center justify-center p-6">
       <h1 className="mb-10 text-3xl font-bold">Checkout page</h1>
-      <div className="h-full bg-gray-100 p-4">
+      <div className="h-full bg-background p-4">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 lg:grid-cols-2">
           {/* Shopping Cart */}
           <Card className="h-fit">
@@ -32,7 +32,7 @@ export default function Checkout() {
               {cartItems.map((item) => (
                 <div
                   key={item.$id}
-                  className="flex items-center gap-4 rounded-lg bg-gray-50 p-4"
+                  className="flex items-center gap-4 rounded-lg bg-background p-4"
                 >
                   <Image
                     src={item.image || "/placeholder.svg"}
@@ -44,7 +44,7 @@ export default function Checkout() {
                     blurDataURL="/placeholder.svg"
                   />
                   <div className="flex-1">
-                    <h3 className="font-medium text-gray-900">{item.name}</h3>
+                    <h3 className="font-medium text-foreground">{item.name}</h3>
                   </div>
                   <div className="space-y-1 text-right">
                     <div className="font-semibold">
